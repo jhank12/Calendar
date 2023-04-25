@@ -1,0 +1,33 @@
+.calendarHeader {
+   /* background-color: blueviolet; */
+   display: flex;
+   justify-content: flex-end;
+   width: 100%;
+   position: relative;
+}
+
+.monthRow {
+   align-self: center;
+   display: flex;
+}
+
+.optionsContainer {
+   align-items: center;
+   display: flex;
+   gap: 65px;
+   position: relative;
+}
+
+.addEventBtn {
+   border-radius: 50px;
+
+  height: 50px;
+  width: 124px;
+}
+
+.accountIcon {
+  background-color: #292929;
+  border-radius: 50px;
+  height: 60px;
+  width: 60px;
+}

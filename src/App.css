@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1E1E1E;
+  color: #d4d4d4;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+main {
+  margin: 0 auto;
+  height: 100vh;
+  width: 90%;
+  position:relative;
+  max-width: 2000px;
+
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #dddddd;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+
+
+a {
+  color: #419BF9;
+  font-weight: 500;
+  text-decoration: none;
+  width: fit-content;
+}
+
+button {
+  cursor: pointer;
+}
+
+.mainActionBtn {
+  background-color: rgba(65, 155, 249, .35);
+  border: none;
+  border-radius: 8px;
+  color: #419BF9;
+  font:inherit;
+  font-size: 1rem;
+  font-weight: 500;
+ 
+}
+
+.linkRight {
+  align-self: flex-end;
+}
+  
+
+/* inputs */
+
+label {
+  color: #C1C1C1;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+input {
+  background-color: #333333;
+  border: none;
+  border-radius: 10px;
+  color: #c1c1c1;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: ;
+  height: 50px;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formSubmit {
+  background-color: #419BF9;
+  border-radius: 10px;
+  border: none;
+  color: #F4F4F4;
+  font: inherit;
+  font-weight: 500;
+  height: 50px;
+  width: 100%;
+}
+
+/* fix below */
+
+.eventItem-red {
+  background-color: rgba(255, 54, 54,.45);
+  color: #f73636;
+}
+
+.eventItem-green {
+  background-color: rgba(54, 255, 62, .45);
+  color:#36ff33;
+}
+
+
+.eventItem-yellow {
+  background-color: rgba(252, 255, 54, 0.45);
+  color:rgba(252, 255, 54, 1);
+}

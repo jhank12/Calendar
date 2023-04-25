@@ -1,0 +1,43 @@
+.calendarDayItem {
+   /* background-color: blue; */
+   background-color: #292929;
+   border-radius: 2px;
+   /* border: 2px solid #474747; */
+   color: #C1C1C1;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   font-size: 1.2rem;
+   font-weight: 500;
+   padding: 8px;
+}
+
+/*  */
+
+.eventItemsList {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+}
+
+.eventItem {
+   /* background-color: rgba(255, 54, 54,.45); */
+   border-radius: 3px;
+   /* color: #FF3636; */
+   padding: 4px;
+   padding-left: 7px;
+}
+
+.eventItem p {
+   font-size: 1.05rem;
+}
+
+.red {
+   background-color: rgba(255, 54, 54,.45);
+   color: #FF3636;
+}
+
+/* #green {
+   background-color:
+} */
+

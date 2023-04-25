@@ -1,0 +1,20 @@
+
+.modalHeader {
+   align-items: center;
+   display: flex;
+   justify-content: space-between;
+
+}
+
+.modalClose {
+   font-size: 2rem;
+   padding-bottom: 7px;
+}
+
+.newEventSave {
+   height: 50px;
+}
+
+.descInput {
+   height: 100px;
+}

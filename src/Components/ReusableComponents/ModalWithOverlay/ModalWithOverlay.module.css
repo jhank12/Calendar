@@ -1,0 +1,7 @@
+.modalOverlay {
+   background-color: rgba(0,0,0, .4);
+   height: 100vh;
+   position: absolute;
+   top: 0;
+   width: 100vw;
+}

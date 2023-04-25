@@ -1,0 +1,23 @@
+.modalHeader, .modalActionsContainer, .iconsContainer {
+   display: flex;
+}
+
+.modalHeader, .modalActionsContainer {
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+}
+
+.iconsContainer {
+   gap: 15px;
+}
+
+.eventModalClose {
+   height: 45px;
+   width: 95px;
+}
+
+.description {
+   border-radius: 5px;
+   min-height: 120px;
+}
