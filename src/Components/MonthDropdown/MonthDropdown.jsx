@@ -33,5 +33,3 @@ const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
 
 export default MonthDropdown;
 
-
-// have events in month sidebar

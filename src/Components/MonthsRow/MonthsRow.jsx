@@ -126,7 +126,6 @@ const MonthsRow = ({ monthDays }) => {
     console.log("changed");
   }, [monthCounter, userEvents, currentYear]);
 
-  const [optionsOpen, setOptionsOpen] = useState(false);
 
   return (
     <div className={styles.monthsRow}>
@@ -142,23 +141,6 @@ const MonthsRow = ({ monthDays }) => {
 
       <YearDropdown currentYear={currentYear} setCurrentYear={setCurrentYear} />
 
-      {/* <div className={styles.dropdown}>
-        <div
-          className={styles.dropdownTop}
-          onClick={() => setOptionsOpen(true)}
-        >
-          <h1>{currentMonth}</h1>
-
-         
-        </div>
-
-          <div className={styles.optionsContainer}>
-            {monthsArr.map((month, idx) => {
-              return <p key={idx} onClick={() => setMonthCounter(monthsArr.indexOf(month))}>{month}</p>;
-            })}
-          </div>
-
-      </div> */}
     </div>
   );
 };
