@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import styles from "./MonthsRow.module.css";
 
-import { addEvent, otherTest } from "../../Redux/Slices/EventReducer";
+import { addEvent, setEventsInMonth } from "../../Redux/Slices/EventReducer";
 
 import { useSelector, useDispatch } from "react-redux";
 import MonthDropdown from "../MonthDropdown/MonthDropdown";
 import YearDropdown from "../YearDropdown/YearDropdown";
 
 const MonthsRow = ({ monthDays }) => {
+  const dispatch = useDispatch();
+
   const monthsArr = [
     "January",
     "February",
@@ -24,7 +26,7 @@ const MonthsRow = ({ monthDays }) => {
   ];
 
   // const dispatch = useDispatch();
-  const userEvents = useSelector((state) => state.userEvents.value);
+  const userEvents = useSelector((state) => state.userEvents.value.allEvents);
 
   //   get month and year and set those on load
 
@@ -88,6 +90,8 @@ const MonthsRow = ({ monthDays }) => {
 
     console.log("redux", filteredEvents);
 
+    dispatch(setEventsInMonth(filteredEvents))
+
     monthDays({
       daysCount: currentMonthDays,
       month: monthsArr[monthCounter],
@@ -123,9 +127,7 @@ const MonthsRow = ({ monthDays }) => {
 
   useEffect(() => {
     getMonthData();
-    console.log("changed");
   }, [monthCounter, userEvents, currentYear]);
-
 
   return (
     <div className={styles.monthsRow}>
@@ -140,7 +142,6 @@ const MonthsRow = ({ monthDays }) => {
       <button onClick={() => increment()}>increment</button>
 
       <YearDropdown currentYear={currentYear} setCurrentYear={setCurrentYear} />
-
     </div>
   );
 };

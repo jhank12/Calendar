@@ -10,6 +10,7 @@ const YearDropdown = ({ currentYear, setCurrentYear}) => {
 
   const yearsArr = [];
 
+  // find better way to do year
   for (let i = 2020; i < 2032; i++) {
    yearsArr.push(i)
   }
