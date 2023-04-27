@@ -10,13 +10,14 @@ import DayEventModal from "../DayEventModal/DayEventModal";
 import ModalOverlay from "../ReusableComponents/ModalOverlay/ModalOverlay";
 import EventModal from "../EventModal/EventModal";
 
-const DayEventsModalList = ({ events, setModalOpen }) => {
+const DayEventsModalList = ({ events, setModalOpen, startCount }) => {
   // change to idx of the clicked event
-  const [eventCounter, setEventCounter] = useState(0);
-  console.log(events.length)
+  console.log(startCount)
+  const [eventCounter, setEventCounter] = useState(startCount);
+  
   function increment() {
     if (eventCounter == events.length - 1) {
-      return;
+      setEventCounter(0)
     } else {
       setEventCounter((count) => count + 1);
     }
@@ -24,17 +25,24 @@ const DayEventsModalList = ({ events, setModalOpen }) => {
 
   function decrement() {
     if (eventCounter == 0) {
-      return;
+      setEventCounter(events.length - 1)
+
     } else {
       setEventCounter((count) => count - 1);
     }
   }
 
-  const [isOpen, setIsOpen] = useState(false);
+
 
   return (
-    <ModalOverlay setIsOpen={setIsOpen} onClick={() => setModalOpen(false)}>
-      <EventModal onClick={setEventCounter} setModalOpen={setModalOpen} events={events} eventCounter={eventCounter} increment={increment} decrement={decrement} event={events[eventCounter]} />
+    <ModalOverlay onClick={() => setModalOpen(false)}>
+      {events.map((event, idx) => {
+        if(idx === eventCounter) {
+          return <EventModal idx={idx} event={event} eventsLength={events.length} setModalOpen={setModalOpen} increment={increment} decrement={decrement}/>
+
+        }
+      })}
+      {/* <EventModal setModalOpen={setModalOpen} events={events} eventCounter={eventCounter} increment={increment} decrement={decrement} event={events[eventCounter]} /> */}
     </ModalOverlay>
   );
 

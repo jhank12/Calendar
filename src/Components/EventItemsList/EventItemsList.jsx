@@ -13,10 +13,15 @@ const EventItemsList = ({ events }) => {
 
   const [dayEvents, setDayEvents] = useState(null);
 
-  function showEventsModals(events) {
+  const [startCount, setStartCount] = useState(0)
+
+  function showEventsModals(events, startCount) {
     console.log(events);
+    console.log('event item',startCount)
 
     setDayEvents(events);
+    setStartCount(startCount);
+
     setEventModalsOpen(true);
   }
 
@@ -27,19 +32,20 @@ const EventItemsList = ({ events }) => {
           <DayEventsModalList
             setModalOpen={setEventModalsOpen}
             events={events}
+            startCount={startCount}
           />,
           portalDiv
         )}
 
       <div className={styles.eventItemsList}>
         {events &&
-          events.map((ev) => {
+          events.map((ev, idx) => {
             const { tag, id, day } = ev;
 
             return (
               <div
                 key={id}
-                onClick={() => showEventsModals(events)}
+                onClick={() => showEventsModals(events, idx)}
                 className={`${styles.eventItem} eventItem-${tag}`}
               >
                 <p>

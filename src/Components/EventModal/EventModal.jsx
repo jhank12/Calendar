@@ -6,10 +6,17 @@ import LabelInputWrap from "../ReusableComponents/LabelInputWrap/LabelInputWrap"
 import ModalContainer from "../ReusableComponents/ModalContainer/ModalContainer";
 import Modal from "../ReusableComponents/Modal/Modal";
 
-const EventModal = ({event, events,eventCounter,increment, decrement,setModalOpen}) => {
+const EventModal = ({
+  event,
+  eventsLength,
+  increment,
+  decrement,
+  setModalOpen,
+  idx
+}) => {
   const iconColor = "#333333";
 
-  console.log(event)
+  console.log(event);
 
   return (
     <ModalContainer>
@@ -17,21 +24,43 @@ const EventModal = ({event, events,eventCounter,increment, decrement,setModalOpe
         <h2>{event.title}</h2>
 
         <div className={styles.eventCounterContainer}>
-          <svg onClick={() => decrement()} xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#787878" class="bi bi-chevron-left" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+          <svg
+            onClick={() => decrement()}
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="#787878"
+            class="bi bi-chevron-left"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+            />
           </svg>
-          
-          <h3><span className={styles.textGray}>{eventCounter + 1}/{events.length}</span></h3>
-          
-          <svg onClick={() => increment()} xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#787878" class="bi bi-chevron-right" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+
+          <h3><span className={styles.textGray}>{idx + 1}/{eventsLength}</span></h3>
+
+          <svg
+            onClick={() => increment()}
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="#787878"
+            class="bi bi-chevron-right"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+            />
           </svg>
         </div>
       </header>
 
       <LabelInputWrap>
         <label>Description</label>
-        <input className={styles.description}/>
+        <input className={styles.description} />
       </LabelInputWrap>
 
       <div className={styles.modalActionsContainer}>
@@ -59,7 +88,10 @@ const EventModal = ({event, events,eventCounter,increment, decrement,setModalOpe
           </svg>
         </div>
 
-        <button className={`${styles.eventModalClose} mainActionBtn`} onClick={() => setModalOpen(false)}>
+        <button
+          className={`${styles.eventModalClose} mainActionBtn`}
+          onClick={() => setModalOpen(false)}
+        >
           Close
         </button>
       </div>
