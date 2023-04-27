@@ -112,6 +112,20 @@ export const userEventsSlice = createSlice({
       });
     },
     updateEvent: (state, action) => {
+      // obj.key = action.payload.value
+
+      console.log(action.payload)
+      const { key, updatedValue, id } = action.payload;
+
+      state.value.allEvents.forEach(event => {
+
+
+
+        if(event.id === id) {
+          event[key] = updatedValue
+        }
+
+      })
 
     },
     
@@ -124,6 +138,7 @@ export const userEventsSlice = createSlice({
   },
 });
 
-export const { addEvent, otherTest, removeEvent, setEventsInMonth } = userEventsSlice.actions;
+
+export const { addEvent, otherTest, removeEvent, setEventsInMonth, updateEvent } = userEventsSlice.actions;
 
 export default userEventsSlice.reducer;
