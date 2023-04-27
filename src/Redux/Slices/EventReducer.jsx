@@ -36,30 +36,48 @@ const initialState = {
   value: {
     allEvents: [
       {
-        title: "new event",
+        title: "one",
         description: "desc for 4-3-2023",
-        date: "4-3-2023",
+        date: "4-5-2023",
         tag: "green",
-        day: "3",
+        day: "5",
         id: "ere=e232-03",
       },
 
       {
-        title: "new event2",
+        title: "two",
         description: "2nd desc for 5-5-2023",
-        date: "5-5-2023",
+        date: "4-5-2023",
         tag: "red",
         day: "5",
         id: "fdier93ed",
       },
 
       {
-        title: "new event1",
+        title: "three",
         description: "desc for 5-5-2023",
-        date: "5-5-2023",
+        date: "4-5-2023",
         tag: "green",
         day: "5",
         id: "ddie3943",
+      },
+
+      {
+        title: "four",
+        description: "desc for 5-5-2023",
+        date: "4-5-2023",
+        tag: "green",
+        day: "5",
+        id: "di457due",
+      },
+
+      {
+        title: "five",
+        description: "desc for 5-5-2023",
+        date: "4-5-2023",
+        tag: "green",
+        day: "5",
+        id: "39fj349fj",
       },
       // {
       //   title: "new event2",
@@ -101,9 +119,7 @@ export const userEventsSlice = createSlice({
       state.value.eventsInMonth = []
       state.value.eventsInMonth.push(...action.payload)
 
-      console.log('rtk events', ...action.payload)
 
-      console.log(state.value.eventsInMonth)
     }
   },
 });

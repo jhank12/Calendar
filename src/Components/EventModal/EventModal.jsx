@@ -6,17 +6,27 @@ import LabelInputWrap from "../ReusableComponents/LabelInputWrap/LabelInputWrap"
 import ModalContainer from "../ReusableComponents/ModalContainer/ModalContainer";
 import Modal from "../ReusableComponents/Modal/Modal";
 
+import { useDispatch } from "react-redux";
+import { removeEvent } from "../../Redux/Slices/EventReducer";
+
 const EventModal = ({
   event,
   eventsLength,
   increment,
   decrement,
   setModalOpen,
-  idx
+  idx,
 }) => {
-  const iconColor = "#333333";
+  const dispatch = useDispatch();
 
-  console.log(event);
+  function removeEventHandler() {
+    dispatch(removeEvent(event.id));
+    decrement();
+    if (eventsLength === 1) {
+      setModalOpen(false);
+    }
+    console.log(eventsLength);
+  }
 
   return (
     <ModalContainer>
@@ -39,7 +49,11 @@ const EventModal = ({
             />
           </svg>
 
-          <h3><span className={styles.textGray}>{idx + 1}/{eventsLength}</span></h3>
+          <h3>
+            <span className={styles.textGray}>
+              {idx + 1}/{eventsLength}
+            </span>
+          </h3>
 
           <svg
             onClick={() => increment()}
@@ -77,6 +91,7 @@ const EventModal = ({
           </svg>
 
           <svg
+            onClick={removeEventHandler}
             xmlns="http://www.w3.org/2000/svg"
             width="22"
             height="22"

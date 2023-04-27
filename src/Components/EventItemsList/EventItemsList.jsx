@@ -16,8 +16,7 @@ const EventItemsList = ({ events }) => {
   const [startCount, setStartCount] = useState(0)
 
   function showEventsModals(events, startCount) {
-    console.log(events);
-    console.log('event item',startCount)
+
 
     setDayEvents(events);
     setStartCount(startCount);
