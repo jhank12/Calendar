@@ -21,3 +21,14 @@
    border-radius: 5px;
    min-height: 120px;
 }
+
+.textGray {
+   color: #787878;
+   /* padding-bottom: 4px; */
+}
+
+.eventCounterContainer {
+   align-items: center;
+   display: flex;
+   gap: 4px;
+}

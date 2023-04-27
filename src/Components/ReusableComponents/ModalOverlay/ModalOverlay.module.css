@@ -1,9 +1,11 @@
-.overlay {
+.modalOverlay {
+   align-items: center;
    background-color: rgba(0,0,0, .4);
    display: flex;
-   gap: 60px;
+   justify-content: center;
    height: 100vh;
-   position: absolute;
+   left: 0;
+   position:absolute;
    top: 0;
    width: 100vw;
 }

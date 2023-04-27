@@ -45,14 +45,6 @@ const initialState = {
       },
 
       {
-        title: "new event1",
-        description: "desc for 5-5-2023",
-        date: "5-5-2023",
-        tag: "green",
-        day: "5",
-        id: "ddie3943",
-      },
-      {
         title: "new event2",
         description: "2nd desc for 5-5-2023",
         date: "5-5-2023",
@@ -60,6 +52,23 @@ const initialState = {
         day: "5",
         id: "fdier93ed",
       },
+
+      {
+        title: "new event1",
+        description: "desc for 5-5-2023",
+        date: "5-5-2023",
+        tag: "green",
+        day: "5",
+        id: "ddie3943",
+      },
+      // {
+      //   title: "new event2",
+      //   description: "2nd desc for 5-5-2023",
+      //   date: "5-5-2023",
+      //   tag: "red",
+      //   day: "5",
+      //   id: "fdier93ed",
+      // },
     ],
 
     eventsInMonth: [],
@@ -93,6 +102,8 @@ export const userEventsSlice = createSlice({
       state.value.eventsInMonth.push(...action.payload)
 
       console.log('rtk events', ...action.payload)
+
+      console.log(state.value.eventsInMonth)
     }
   },
 });

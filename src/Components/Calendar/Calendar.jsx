@@ -18,11 +18,7 @@ const Calendar = () => {
     <section className={styles.calendar}>
       <CalendarHeader monthDays={monthDays} />
 
-      {/* use portal for modal */}
-
-      {/* <EventModal /> */}
-
-      {/* <section> */}
+      
         <div className={styles.daysOfWeek}>
           <p>Sunday</p>
           <p>Monday</p>
@@ -33,8 +29,7 @@ const Calendar = () => {
           <p>Saturday</p>
         </div>
         <CalendarGrid monthData={currentMonthData} />
-      {/* </section> */}
-      {/* </div> */}
+      
     </section>
   );
 };
