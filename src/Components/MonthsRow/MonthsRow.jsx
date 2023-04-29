@@ -78,9 +78,10 @@ const MonthsRow = ({ monthDays }) => {
       previousMonth = "December";
     }
 
-
     const previousMonthMilliseconds = new Date(
-      `${previousMonth}, 01, ${previousMonth == 'December' ? currentYear - 1 : currentYear}`
+      `${previousMonth}, 01, ${
+        previousMonth == "December" ? currentYear - 1 : currentYear
+      }`
     ).getTime();
 
     const currentMonthMilliseconds = new Date(
@@ -88,14 +89,23 @@ const MonthsRow = ({ monthDays }) => {
     ).getTime();
 
     const nextMonthMilliseconds = new Date(
-      `${nextMonth}, 01, ${nextMonth == 'January' ? currentYear + 1 : currentYear}`
+      `${nextMonth}, 01, ${
+        nextMonth == "January" ? currentYear + 1 : currentYear
+      }`
     ).getTime();
 
     const afterNextMonthMilliseconds = new Date(
-      `${afterNextMonth}, 01, ${afterNextMonth == 'January' || nextMonth == 'January' ? currentYear + 1 : currentYear}`
+      `${afterNextMonth}, 01, ${
+        afterNextMonth == "January" || nextMonth == "January"
+          ? currentYear + 1
+          : currentYear
+      }`
     ).getTime();
 
-    
+    // extract functions into other file
+
+    // make function so this is more efficient
+    //
 
     // days
 
@@ -103,38 +113,49 @@ const MonthsRow = ({ monthDays }) => {
     // const currentMonthDays = Math.round(Math.floor(nextMonthMilliseconds - currentMonthMilliseconds) / 86400000);
     // const nextMonthDays = Math.round(Math.floor(afterNextMonthMilliseconds - nextMonthMilliseconds) / 86400000);
 
-    const previousMonthDays = Math.round((currentMonthMilliseconds - previousMonthMilliseconds) / 86400000);
-    const currentMonthDays = Math.round((nextMonthMilliseconds - currentMonthMilliseconds) / 86400000);
-    const nextMonthDays = Math.round((afterNextMonthMilliseconds - nextMonthMilliseconds) / 86400000);
-    console.log(previousMonthDays, currentMonthDays, nextMonthDays)
+    const previousMonthDays = Math.round(
+      (currentMonthMilliseconds - previousMonthMilliseconds) / 86400000
+    );
+    const currentMonthDays = Math.round(
+      (nextMonthMilliseconds - currentMonthMilliseconds) / 86400000
+    );
+    const nextMonthDays = Math.round(
+      (afterNextMonthMilliseconds - nextMonthMilliseconds) / 86400000
+    );
 
+    const currentMonthStartDay = new Date(
+      `${monthsArr[monthCounter]}, 01, ${currentYear}`
+    ).getDay();
 
-    const currentMonthStartDay = new Date(`${monthsArr[monthCounter]}, 01, ${currentYear}`).getDay();
+    const monthsData = {
+      previousMonth: {
+        month: previousMonth,
+        year: previousMonth == "December" ? currentYear - 1 : currentYear,
+        daysCount: previousMonthDays,
+        events: filterEvents(previousMonth, previousMonth == "December" ? currentYear - 1 : currentYear)
 
-    console.log(currentMonthStartDay)
+      },
+      currentMonth: {
+        month: currentMonthNew,
+        year: currentYear,
+        daysCount: currentMonthDays,
+        events: filterEvents(currentMonthNew, currentYear),
+        monthStartDay: currentMonthStartDay,
+      },
+      nextMonth: {
+        month: nextMonth,
+        year: nextMonth == "January" ? currentYear + 1 : currentYear,
+        daysCount: nextMonthDays,
+        events: filterEvents(nextMonth, nextMonth == "January" ? currentYear + 1 : currentYear)
+      },
+    };
 
-    // if (monthsArr[monthCounter] == "December") {
-    //   nextMonthMilliseconds = new Date(
-    //     `January, 01, ${currentYear + 1}`
-    //   ).getTime();
-    // } else {
-    //   nextMonthMilliseconds = new Date(
-    //     `${monthsArr[monthCounter + 1]}, 01, ${currentYear}`
-    //   ).getTime();
-    // }
+    console.log(monthsData)
 
-    // const currentMonthDays = Math.round(
-    //   (nextMonthMilliseconds - currentMonthMilliseconds) / 86400000
-    // );
+    // pass monthsData props into filter events but as their value ex.(previousMonth == march)
 
-    // const nextMonthDays =
-    //   Math.round(afterNextMilliseconds - nextMonthMilliseconds) / 86400000;
-
-    // const monthStartDay = new Date(
-    //   `${monthsArr[monthCounter]}, 01, ${currentYear}`
-    // ).getDay();
-
-    // const filteredEvents = filterEvents(userEvents);
+    const months = [previousMonth, currentMonthNew, nextMonth];
+    filterEvents(monthsData, months);
 
     // dispatch(setEventsInMonth(filteredEvents));
 
@@ -146,8 +167,9 @@ const MonthsRow = ({ monthDays }) => {
     // });
   }
 
-  function filterEvents(arr) {
-    const eventsInMonth = arr.filter((event) => {
+  function filterEvents(month, year) {
+    
+    const eventsInMonths = userEvents.filter((event) => {
       const { date } = event;
 
       const hyphenIdxArr = [];
@@ -158,16 +180,82 @@ const MonthsRow = ({ monthDays }) => {
         }
       }
 
-      if (
-        date.slice(0, hyphenIdxArr[0]) == monthCounter + 1 &&
-        date.slice(hyphenIdxArr[1] + 1) == currentYear
-      ) {
-        return event;
+      const eventMonth = monthsArr[date.slice(0, hyphenIdxArr[0]) - 1];
+      const eventYear = date.slice(hyphenIdxArr[1] + 1);
+
+
+      if(eventMonth == month && eventYear == year) {
+        return event
       }
+
+
     });
 
-    return eventsInMonth;
+    return eventsInMonths
+
   }
+
+  // function filterEvents(monthsData,months){
+
+  // const events = []
+
+  // const eventsInMonths = userEvents.filter(event => {
+  //   const {date} = event;
+
+  //   const hyphenIdxArr = [];
+
+  //   for (let i = 0; i< date.length; i++) {
+  //     if(date[i] == '-'){
+  //       hyphenIdxArr.push(i)
+  //     }
+  //   }
+
+  //   const eventMonth = monthsArr[date.slice(0, hyphenIdxArr[0]) - 1];
+  //   const eventYear = date.slice(hyphenIdxArr[1] + 1);
+
+  //   for (let prop in monthsData) {
+
+  //     if(eventMonth == monthsData[prop].month && eventYear == monthsData[prop].year) {
+
+  //       events.push({[prop]: prop, events: [event]})
+
+  //       // events.push({prop: event})
+  //     }
+
+  //   }
+
+  //   console.log(events)
+
+  //   return events
+
+  // })
+
+  // }
+
+  // filter events func start
+  // function filterEvents(arr) {
+  //   const eventsInMonth = arr.filter((event) => {
+  //     const { date } = event;
+
+  //     const hyphenIdxArr = [];
+
+  //     for (let i = 0; i < date.length; i++) {
+  //       if (date[i] == "-") {
+  //         hyphenIdxArr.push(i);
+  //       }
+  //     }
+
+  //     if (
+  //       date.slice(0, hyphenIdxArr[0]) == monthCounter + 1 &&
+  //       date.slice(hyphenIdxArr[1] + 1) == currentYear
+  //     ) {
+  //       return event;
+  //     }
+  //   });
+
+  //   return eventsInMonth;
+  // }
+  // filter events func end
 
   // find way to keep current state when navigating back from page
 

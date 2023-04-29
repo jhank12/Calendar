@@ -79,6 +79,42 @@ const initialState = {
         day: "5",
         id: "39fj349fj",
       },
+
+      {
+        title: "six",
+        description: "desc for 5-1-2023",
+        date: "5-1-2023",
+        tag: "green",
+        day: "1",
+        id: "788erfdj",
+      },
+
+      {
+        title: "six",
+        description: "desc for 5-1-2023",
+        date: "5-1-2023",
+        tag: "green",
+        day: "1",
+        id: "788erf52248dj",
+      },
+
+      {
+        title: "seven",
+        description: "desc for 3-30-2023",
+        date: "3-30-2023",
+        tag: "green",
+        day: "30",
+        id: "788ety59gerfdj",
+      },
+
+      {
+        title: "eight",
+        description: "desc for 6-11-2023",
+        date: "6-11-2023",
+        tag: "green",
+        day: "11",
+        id: "7u6578gerfdj",
+      },
       // {
       //   title: "new event2",
       //   description: "2nd desc for 5-5-2023",
