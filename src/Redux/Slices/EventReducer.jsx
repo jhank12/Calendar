@@ -90,7 +90,6 @@ const initialState = {
     ],
 
     eventsInMonth: [],
-
   },
 };
 
@@ -99,46 +98,40 @@ export const userEventsSlice = createSlice({
   initialState,
   reducers: {
     addEvent: (state, action) => {
-
       action.payload.id = nanoid();
 
       state.value.allEvents.push(action.payload);
     },
     removeEvent: (state, action) => {
-
       state.value.allEvents = state.value.allEvents.filter((userEvent) => {
-
         return userEvent.id != action.payload;
       });
     },
     updateEvent: (state, action) => {
-      // obj.key = action.payload.value
 
-      console.log(action.payload)
+      console.log(action.payload);
       const { key, updatedValue, id } = action.payload;
 
-      state.value.allEvents.forEach(event => {
-
-
-
-        if(event.id === id) {
-          event[key] = updatedValue
+      state.value.allEvents.forEach((event) => {
+        if (event.id === id) {
+          event[key] = updatedValue;
         }
-
-      })
-
+      });
     },
-    
+
     setEventsInMonth: (state, action) => {
-      state.value.eventsInMonth = []
-      state.value.eventsInMonth.push(...action.payload)
-
-
-    }
+      state.value.eventsInMonth = [];
+      state.value.eventsInMonth.push(...action.payload);
+    },
   },
 });
 
-
-export const { addEvent, otherTest, removeEvent, setEventsInMonth, updateEvent } = userEventsSlice.actions;
+export const {
+  addEvent,
+  otherTest,
+  removeEvent,
+  setEventsInMonth,
+  updateEvent,
+} = userEventsSlice.actions;
 
 export default userEventsSlice.reducer;

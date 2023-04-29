@@ -21,12 +21,16 @@ const EventModal = ({
 
   function removeEventHandler() {
     dispatch(removeEvent(event.id));
-    decrement();
+    // decrement();
+    // if(eventsLength)
+    if(idx === eventsLength - 1) {
+      console.log('decrement')
+      decrement()
+    }
     
     if (eventsLength === 1) {
       setModalOpen(false);
-    }
-    console.log(eventsLength);
+    } 
   }
 
   // allow user to update

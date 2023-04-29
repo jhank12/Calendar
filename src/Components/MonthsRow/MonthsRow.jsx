@@ -59,45 +59,91 @@ const MonthsRow = ({ monthDays }) => {
     }
   }
 
+  // get last month, current and next
+
   function getMonthData() {
     setCurrentMonth(monthsArr[monthCounter]);
 
-    const currentMonthMilliseconds = new Date(
-      `${monthsArr[monthCounter]}, 01, ${currentYear}`
-    ).getTime();
+    let previousMonth = monthsArr[monthCounter - 1];
+    const currentMonthNew = monthsArr[monthCounter];
+    let nextMonth = monthsArr[monthCounter + 1];
+    let afterNextMonth = monthsArr[monthCounter + 2];
 
-    let nextMonthMilliseconds;
-
-    if (monthsArr[monthCounter] == "December") {
-      nextMonthMilliseconds = new Date(
-        `January, 01, ${currentYear + 1}`
-      ).getTime();
-    } else {
-      nextMonthMilliseconds = new Date(
-        `${monthsArr[monthCounter + 1]}, 01, ${currentYear}`
-      ).getTime();
+    if (currentMonthNew == "November") {
+      afterNextMonth = "January";
+    } else if (currentMonthNew == "December") {
+      nextMonth = "January";
+      afterNextMonth = "February";
+    } else if (currentMonthNew == "January") {
+      previousMonth = "December";
     }
 
-    const currentMonthDays = Math.round(
-      (nextMonthMilliseconds - currentMonthMilliseconds) / 86400000
-    );
 
-    const monthStartDay = new Date(
-      `${monthsArr[monthCounter]}, 01, ${currentYear}`
-    ).getDay();
+    const previousMonthMilliseconds = new Date(
+      `${previousMonth}, 01, ${previousMonth == 'December' ? currentYear - 1 : currentYear}`
+    ).getTime();
 
-    const filteredEvents = filterEvents(userEvents);
+    const currentMonthMilliseconds = new Date(
+      `${currentMonthNew}, 01, ${currentYear}`
+    ).getTime();
 
-    console.log("redux", filteredEvents);
+    const nextMonthMilliseconds = new Date(
+      `${nextMonth}, 01, ${nextMonth == 'January' ? currentYear + 1 : currentYear}`
+    ).getTime();
 
-    dispatch(setEventsInMonth(filteredEvents))
+    const afterNextMonthMilliseconds = new Date(
+      `${afterNextMonth}, 01, ${afterNextMonth == 'January' || nextMonth == 'January' ? currentYear + 1 : currentYear}`
+    ).getTime();
 
-    monthDays({
-      daysCount: currentMonthDays,
-      month: monthsArr[monthCounter],
-      monthStartDay: monthStartDay,
-      events: filteredEvents,
-    });
+    
+
+    // days
+
+    // const previousMonthDays = Math.round(Math.floor(currentMonthMilliseconds - previousMonthMilliseconds) / 86400000);
+    // const currentMonthDays = Math.round(Math.floor(nextMonthMilliseconds - currentMonthMilliseconds) / 86400000);
+    // const nextMonthDays = Math.round(Math.floor(afterNextMonthMilliseconds - nextMonthMilliseconds) / 86400000);
+
+    const previousMonthDays = Math.round((currentMonthMilliseconds - previousMonthMilliseconds) / 86400000);
+    const currentMonthDays = Math.round((nextMonthMilliseconds - currentMonthMilliseconds) / 86400000);
+    const nextMonthDays = Math.round((afterNextMonthMilliseconds - nextMonthMilliseconds) / 86400000);
+    console.log(previousMonthDays, currentMonthDays, nextMonthDays)
+
+
+    const currentMonthStartDay = new Date(`${monthsArr[monthCounter]}, 01, ${currentYear}`).getDay();
+
+    console.log(currentMonthStartDay)
+
+    // if (monthsArr[monthCounter] == "December") {
+    //   nextMonthMilliseconds = new Date(
+    //     `January, 01, ${currentYear + 1}`
+    //   ).getTime();
+    // } else {
+    //   nextMonthMilliseconds = new Date(
+    //     `${monthsArr[monthCounter + 1]}, 01, ${currentYear}`
+    //   ).getTime();
+    // }
+
+    // const currentMonthDays = Math.round(
+    //   (nextMonthMilliseconds - currentMonthMilliseconds) / 86400000
+    // );
+
+    // const nextMonthDays =
+    //   Math.round(afterNextMilliseconds - nextMonthMilliseconds) / 86400000;
+
+    // const monthStartDay = new Date(
+    //   `${monthsArr[monthCounter]}, 01, ${currentYear}`
+    // ).getDay();
+
+    // const filteredEvents = filterEvents(userEvents);
+
+    // dispatch(setEventsInMonth(filteredEvents));
+
+    // monthDays({
+    //   daysCount: currentMonthDays,
+    //   month: monthsArr[monthCounter],
+    //   monthStartDay: monthStartDay,
+    //   // events: filteredEvents,
+    // });
   }
 
   function filterEvents(arr) {

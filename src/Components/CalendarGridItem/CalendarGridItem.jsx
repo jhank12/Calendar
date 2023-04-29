@@ -17,7 +17,8 @@ const CalendarGridItem = ({ dayData }) => {
   return (
     <div className={styles.calendarDayItem}>
       {dayData.i}
-
+      {/* {dayData.month} */}
+      
       <EventItemsList events={dayData.events} />
     </div>
   );
