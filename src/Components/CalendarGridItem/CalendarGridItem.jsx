@@ -12,14 +12,12 @@ import EventItemsList from "../EventItemsList/EventItemsList";
 
 const CalendarGridItem = ({ dayData }) => {
   const dispatch = useDispatch();
-
-
   return (
     <div className={styles.calendarDayItem}>
-      {dayData.i}
+      {dayData.day}
       {/* {dayData.month} */}
-      
-      <EventItemsList events={dayData.events} />
+
+      {dayData.events.length > 0 && <EventItemsList events={dayData.events} />}
     </div>
   );
 };

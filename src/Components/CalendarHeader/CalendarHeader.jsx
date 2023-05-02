@@ -23,7 +23,7 @@ const CalendarHeader = ({ monthDays, allEvents }) => {
       {isOpen &&
         createPortal(<NewEventModal setIsOpen={setIsOpen} />, portalDiv)}
 
-      <MonthsRow monthDays={monthDays} events={allEvents} />
+      <MonthsRow events={allEvents} />
 
       <div className={styles.optionsContainer}>
         <button

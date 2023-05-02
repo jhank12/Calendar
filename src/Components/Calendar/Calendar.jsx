@@ -16,7 +16,7 @@ const Calendar = () => {
 
   return (
     <section className={styles.calendar}>
-      <CalendarHeader monthDays={monthDays} />
+      <CalendarHeader />
 
       
         <div className={styles.daysOfWeek}>

@@ -115,6 +115,32 @@ const initialState = {
         day: "11",
         id: "7u6578gerfdj",
       },
+
+      {
+        title: "9",
+        description: "desc for 6-11-2023",
+        date: "1-11-2024",
+        tag: "green",
+        day: "11",
+        id: "7u6578gerfasdfasdfasffdj",
+      },
+      {
+        title: "9",
+        description: "desc for 6-11-2023",
+        date: "12-31-2023",
+        tag: "green",
+        day: "31",
+        id: "7u6578gerfasdfasdfasffdj",
+      },
+
+      {
+        title: "9",
+        description: "desc for 6-11-2023",
+        date: "1-1-2024",
+        tag: "green",
+        day: "1",
+        id: "7u6578gerfasdfasdfasffdj",
+      },
       // {
       //   title: "new event2",
       //   description: "2nd desc for 5-5-2023",
@@ -125,7 +151,9 @@ const initialState = {
       // },
     ],
 
-    eventsInMonth: [],
+    monthsData: {},
+
+    // eventsInMonths: [],
   },
 };
 
@@ -144,8 +172,6 @@ export const userEventsSlice = createSlice({
       });
     },
     updateEvent: (state, action) => {
-
-      console.log(action.payload);
       const { key, updatedValue, id } = action.payload;
 
       state.value.allEvents.forEach((event) => {
@@ -155,9 +181,23 @@ export const userEventsSlice = createSlice({
       });
     },
 
-    setEventsInMonth: (state, action) => {
-      state.value.eventsInMonth = [];
-      state.value.eventsInMonth.push(...action.payload);
+    setEventsInMonths: (state, action) => {
+
+      state.value.monthsData = {};
+      state.value.monthsData = action.payload
+
+      console.log(action.payload)
+
+      // might need all month data (dayStart, daysCount, events)
+      // for (let prop in action.payload) {
+      //   state.value.eventsInMonths[prop] = {
+      //     events: action.payload[prop].events,
+      //   };
+      // }
+
+
+      // state.value.eventsInMonths = [];
+      // state.value.eventsInMonths.push(...action.payload);
     },
   },
 });
@@ -166,7 +206,7 @@ export const {
   addEvent,
   otherTest,
   removeEvent,
-  setEventsInMonth,
+  setEventsInMonths,
   updateEvent,
 } = userEventsSlice.actions;
 
