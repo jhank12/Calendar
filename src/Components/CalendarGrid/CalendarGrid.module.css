@@ -7,3 +7,9 @@
    height: 100%;
 }
 
+@media (max-width: 850px) {
+   .calendarGrid {
+      grid-template-rows: repeat(5, 75px);
+      /* gap: 10px; */
+   }
+}

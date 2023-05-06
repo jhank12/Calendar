@@ -10,25 +10,34 @@ const Calendar = () => {
   const [currentMonthData, setCurrentMonthData] = useState({});
 
   // maybe put in redux
-  function monthDays(data) {
-    setCurrentMonthData(data);
-  }
+  // function monthDays(data) {
+  //   setCurrentMonthData(data);
+  // }
 
   return (
     <section className={styles.calendar}>
       <CalendarHeader />
 
-      
+        <div>
         <div className={styles.daysOfWeek}>
-          <p>Sunday</p>
+          {/* <p>Sunday</p>
           <p>Monday</p>
           <p>Tuesday</p>
           <p>Wednesday</p>
           <p>Thursday</p>
           <p>Friday</p>
-          <p>Saturday</p>
+          <p>Saturday</p> */}
+
+          <p>Sun</p>
+          <p>Mon</p>
+          <p>Tues</p>
+          <p>Wed</p>
+          <p>Thurs</p>
+          <p>Fri</p>
+          <p>Sat</p>
         </div>
-        <CalendarGrid monthData={currentMonthData} />
+        <CalendarGrid  />
+          </div>      
       
     </section>
   );

@@ -1,4 +1,5 @@
 .eventItemsList {
+   /* background-color: beige; */
    display: flex;
    flex-direction: column;
    gap: 5px;
@@ -11,8 +12,29 @@
    /* color: #FF3636; */
    padding: 4px;
    padding-left: 7px;
+
+   
 }
 
 .eventItem p {
    font-size: 1.05rem;
+}
+
+@media (max-width: 850px) {
+   .eventItemsList {
+      flex-direction: row;
+      justify-content: center;
+      gap: 8px;
+   }
+
+   .eventItem {
+      /* background-color: rgba(255, 54, 54,1); */
+      border-radius: 50%;
+      height: 12px;
+      width: 12px;
+   }
+
+   .eventItemText {
+      display: none;
+   }
 }

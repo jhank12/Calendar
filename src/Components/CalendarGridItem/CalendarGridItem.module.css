@@ -1,13 +1,31 @@
 .calendarDayItem {
-   /* background-color: blue; */
-   background-color: #292929;
-   border-radius: 2px;
-   /* border: 2px solid #474747; */
-   color: #C1C1C1;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   font-size: 1.2rem;
-   font-weight: 500;
-   padding: 8px;
+  /* background-color: blue; */
+  background-color: #292929;
+  background-color: #252525;
+
+  border-radius: 2px;
+  /* border: 2px solid #474747; */
+  color: #c1c1c1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 8px;
+  position: relative;
+}
+
+@media (max-width: 850px) {
+  .calendarDayItem {
+    /* background-color: transparent; */
+    align-items: center;
+    font-size: 1.5rem;
+
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .contentContainer {
+    /* position: sticky; */
+  }
 }

@@ -14,10 +14,13 @@ const CalendarGridItem = ({ dayData }) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.calendarDayItem}>
-      {dayData.day}
+      {/* <div className={styles.contentContainer}> */}
+        {dayData.day}
+        {dayData.events.length > 0 && (
+          <EventItemsList events={dayData.events} />
+        )}
+      {/* </div> */}
       {/* {dayData.month} */}
-
-      {dayData.events.length > 0 && <EventItemsList events={dayData.events} />}
     </div>
   );
 };

@@ -16,73 +16,63 @@ const CalendarGrid = ({ monthData }) => {
 
   const [daysArr, setDaysArr] = useState([]);
 
-  const { month, daysCount, monthStartDay } = monthData;
+  // const { month, daysCount, monthStartDay } = monthData;
 
   const monthsData = useSelector((state) => state.userEvents.value.monthsData);
 
   const { prevMonth, currentMonth, nextMonth } = monthsData;
 
-  console.log(monthsData)
+  console.log(monthsData);
 
   function buildGrid() {
     const gridDaysArr = [];
 
     const { monthStartDay: currMonthStartDay } = monthsData.currentMonth;
 
-
     let nextMonthCount = 1;
 
     for (let i = 1; i < 43; i++) {
-
       // gridDaysArr.push({day: i, events: []})
 
-      if(i <= currMonthStartDay) {
-        console.log(prevMonth)
-        const events = mapEventsToDays(prevMonth,  (prevMonth.daysCount - currMonthStartDay) + i)
+      if (i <= currMonthStartDay) {
+        const events = mapEventsToDays(
+          prevMonth,
+          prevMonth.daysCount - currMonthStartDay + i
+        );
 
+        gridDaysArr.push({
+          day: prevMonth.daysCount - currMonthStartDay + i,
+          events: events,
+        });
+      } else if (
+        i > currMonthStartDay &&
+        i <= currentMonth.daysCount + currMonthStartDay
+      ) {
+        const events = mapEventsToDays(currentMonth, i - currMonthStartDay);
 
-        gridDaysArr.push({day: (prevMonth.daysCount - currMonthStartDay) + i, events: events})
-      
-      
-      } else if(i > currMonthStartDay && i <= currentMonth.daysCount + currMonthStartDay) {
-
-        const events = mapEventsToDays(currentMonth, i - currMonthStartDay)
-
-        
-        gridDaysArr.push({day: i - currMonthStartDay, events: events})
+        gridDaysArr.push({ day: i - currMonthStartDay, events: events });
       } else {
+        const events = mapEventsToDays(nextMonth, nextMonthCount);
 
-        // const events = nextMonth.events.map(event => {
-        //   if(event.day == nextMonthCount) {
-        //     return event
-        //   } else {
-        //     return {}
-        //   }
-        // })
+        gridDaysArr.push({ day: nextMonthCount, events: events });
 
-        const events = mapEventsToDays(nextMonth, nextMonthCount)
-        
-        gridDaysArr.push({day: nextMonthCount, events:events})
-
-        nextMonthCount++
+        nextMonthCount++;
       }
-
-
     }
 
     setDaysArr(gridDaysArr);
   }
 
   function mapEventsToDays(month, num) {
-    
-    return month.events.map(event => {
-      if(event.day == num) {
-        return event
+    const monthEvents = month.events.filter((event) => {
+      if (event.day == num) {
+        return event;
       } else {
-        return {}
+        return;
       }
-    })
+    });
 
+    return monthEvents;
   }
 
   // have is loading bool one level above
@@ -98,15 +88,11 @@ const CalendarGrid = ({ monthData }) => {
 
   return (
     <>
-      {/* {!isLoading ? ( */}
       <div className={styles.calendarGrid}>
         {daysArr.map((day) => {
           return <CalendarGridItem dayData={day} />;
         })}
       </div>
-      {/* ) : ( */}
-      {/* <h2>Loading</h2> */}
-      {/* )} */}
     </>
   );
 };
