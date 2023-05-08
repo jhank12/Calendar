@@ -2,7 +2,7 @@
    /* background-color: #1e1e1e; */
    display: grid;
    grid-template-columns: repeat(7, 1fr);
-   grid-template-rows: repeat(5, 165px);
+   grid-template-rows: repeat(6, 165px);
    gap: 4px;
    height: 100%;
 }
