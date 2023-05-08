@@ -16,7 +16,6 @@ const Calendar = ({currentUser}) => {
 
   return (
     <section className={styles.calendar}>
-      <h2>{currentUser.email}</h2>
       <CalendarHeader />
 
         <div>

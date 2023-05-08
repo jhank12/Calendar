@@ -15,6 +15,7 @@ const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
   
   return (
     <Dropdown>
+
       <div className='dropdownTop' onClick={() => setOptionsOpen(!optionsOpen)}>
         <h1>{currentMonth}</h1>
       </div>
@@ -32,4 +33,3 @@ const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
 };
 
 export default MonthDropdown;
-

@@ -61,20 +61,23 @@ const MonthsRow = ({ monthDays }) => {
     }
 
     // setCurrentMonth(monthsArr[monthCounter])
-
   }
 
   // get last month, current and next
 
-  function getMonthData() {
+  const [previousMonth, setPreviousMonth] = useState("");
+  const [nextMonth, setNextMonth] = useState("");
 
+  function getMonthData() {
     const currentMonth = monthsArr[monthCounter];
 
-    setCurrentMonth(currentMonth)
+    setCurrentMonth(currentMonth);
 
+    
     let previousMonth = monthsArr[monthCounter - 1];
     let nextMonth = monthsArr[monthCounter + 1];
     let afterNextMonth = monthsArr[monthCounter + 2];
+    
 
     if (currentMonth == "November") {
       afterNextMonth = "January";
@@ -84,6 +87,11 @@ const MonthsRow = ({ monthDays }) => {
     } else if (currentMonth == "January") {
       previousMonth = "December";
     }
+
+    
+
+    setPreviousMonth(previousMonth);
+    setNextMonth(nextMonth);
 
     const previousMonthMilliseconds = new Date(
       `${previousMonth}, 01, ${
@@ -162,9 +170,7 @@ const MonthsRow = ({ monthDays }) => {
       },
     };
 
-
     // pass monthsData props into filter events but as their value ex.(previousMonth == march)
-
 
     let isTrue = false;
 
@@ -176,12 +182,12 @@ const MonthsRow = ({ monthDays }) => {
         ) {
           return;
         } else {
-          isTrue = true
+          isTrue = true;
         }
       }
     }
 
-    if(isTrue) dispatch(setEventsInMonths(monthsData));
+    if (isTrue) dispatch(setEventsInMonths(monthsData));
 
     // dispatch(setEventsInMonth(filteredEvents));
 
@@ -193,35 +199,29 @@ const MonthsRow = ({ monthDays }) => {
     // });
   }
 
-
-
   function filterEvents(month, year) {
-    if(userEvents) {
-
+    if (userEvents) {
       const eventsInMonths = userEvents.filter((event) => {
         const { date } = event;
-  
+
         const hyphenIdxArr = [];
-  
+
         for (let i = 0; i < date.length; i++) {
           if (date[i] == "-") {
             hyphenIdxArr.push(i);
           }
         }
-  
+
         const eventMonth = monthsArr[date.slice(0, hyphenIdxArr[0]) - 1];
         const eventYear = date.slice(hyphenIdxArr[1] + 1);
-  
+
         if (eventMonth == month && eventYear == year) {
           return event;
         }
       });
       return eventsInMonths;
-    } else return
-
+    } else return;
   }
-
-
 
   useEffect(() => {
     getMonthData();
@@ -229,7 +229,8 @@ const MonthsRow = ({ monthDays }) => {
 
   return (
     <div className={styles.monthsRow}>
-      <button onClick={() => decrement()}>decrement</button>
+      {/* <button onClick={() => decrement()}>decrement</button> */}
+      <h2 onClick={() => decrement()}>{previousMonth}</h2>
 
       <MonthDropdown
         currentMonth={currentMonth}
@@ -237,7 +238,9 @@ const MonthsRow = ({ monthDays }) => {
         monthsArr={monthsArr}
       />
 
-      <button onClick={() => increment()}>increment</button>
+      <h2 onClick={() => increment()}>{nextMonth}</h2>
+
+      {/* <button onClick={() => increment()}>increment</button> */}
 
       <YearDropdown currentYear={currentYear} setCurrentYear={setCurrentYear} />
     </div>

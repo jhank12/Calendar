@@ -23,6 +23,7 @@ const Home = () => {
     onSnapshot(doc(db, "users", currentUser.uid), doc => {
       // if(doc.data().events.length > 0) {
         console.log(currentUser.email)
+        // better check
         dispatch(setAllEvents([]))
         dispatch(setAllEvents(doc.data().events))
       // }

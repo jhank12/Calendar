@@ -16,6 +16,10 @@
    
 }
 
+.eventItem:hover {
+   scale: 1.015;
+}
+
 .eventItem p {
    font-size: 1.05rem;
 }

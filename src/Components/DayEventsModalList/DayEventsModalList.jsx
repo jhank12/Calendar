@@ -31,6 +31,7 @@ const DayEventsModalList = ({ events, setModalOpen, startCount }) => {
   }
 
   return (
+    
     <ModalOverlay onClick={() => setModalOpen(false)}>
       {events.map((event, idx) => {
         if (idx === eventCounter) {
