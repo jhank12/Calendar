@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./NewEventModal.module.css";
 
 import ModalContainer from "../ReusableComponents/ModalContainer/ModalContainer";
@@ -7,22 +7,27 @@ import LabelInputWrap from "../ReusableComponents/LabelInputWrap/LabelInputWrap"
 import { addEvent } from "../../Redux/Slices/EventReducer";
 
 import { useDispatch, useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import Modal from "../ReusableComponents/Modal/Modal";
 import ModalWithOverlay from "../ReusableComponents/ModalWithOverlay/ModalWithOverlay";
 
+import { db } from 'E:/Web Development/React Projects/calendar/src/firebase/config.js'
 import { doc, setDoc, updateDoc } from "firebase/firestore";
+
+import { AuthContext } from 'E:/Web Development/React Projects/calendar/src/Contexts/AuthContext.jsx'
 
 const NewEventModal = ({ setIsOpen }) => {
   const dispatch = useDispatch();
 
   const allEvents = useSelector((state) => state.userEvents.value);
 
+  const { currentUser } = useContext(AuthContext)
+
   const [date, setDate] = useState("");
   const [day, setDay] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  console.log(allEvents)
 
   function formatDate(e) {
     //  console.log(e.target.value);
@@ -57,17 +62,25 @@ const NewEventModal = ({ setIsOpen }) => {
       description: description,
       tag: "red",
       day: day,
+      id:nanoid()
     };
     
-    const docRef = doc(db, "users", currentUser.uid)
+    const docRef = doc(db, "users", currentUser.uid);
+
+    const { allEvents: events, monthsData } = allEvents
+    console.log(events)
+    // console.log(docRef)  
+    updateDoc(docRef, {
+      email: currentUser.email,
+      events: [...events, newEventObj]
+    })
 
     // dispatch(addEvent(newEventObj));
 
-    updateDoc
+    // updateDoc
 
     setIsOpen(false);
 
-    console.log(events);
   }
 
   return (
@@ -86,13 +99,13 @@ const NewEventModal = ({ setIsOpen }) => {
             type="date"
             placeholder="mm/dd/yyyy"
             onChange={(e) => formatDate(e)}
-            required
+            
           />
         </LabelInputWrap>
 
         <LabelInputWrap>
           <label>Title</label>
-          <input type="text" onChange={(e) => setTitle(e.target.value)} required/>
+          <input type="text" onChange={(e) => setTitle(e.target.value)} />
         </LabelInputWrap>
 
         <LabelInputWrap>
@@ -101,7 +114,7 @@ const NewEventModal = ({ setIsOpen }) => {
             type=""
             className={styles.descInput}
             onChange={(e) => setDescription(e.target.value)}
-            required
+            
           />
         </LabelInputWrap>
 
