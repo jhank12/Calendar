@@ -33,7 +33,7 @@ const CalendarHeader = ({ monthDays, allEvents }) => {
           Add Event
         </button>
         <Link to="/account">
-          <div className={styles.accountIcon}></div>
+          <div className={styles.accountIcon} ></div>
         </Link>
       </div>
     </section>

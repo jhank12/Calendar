@@ -22,7 +22,6 @@ const EventItemsList = ({ events }) => {
     setEventModalsOpen(true);
   }
 
-  console.log(events, events.length)
 
   return (
     <>
@@ -51,7 +50,7 @@ const EventItemsList = ({ events }) => {
                   className={`${styles.eventItem} eventItem-${tag}`}
                 >
                   <p className={styles.eventItemText}>
-                    {ev.title} {ev.date} {ev.tag}
+                    {ev.title}
                   </p>
                 </div>
               );

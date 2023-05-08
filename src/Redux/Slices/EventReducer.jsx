@@ -35,162 +35,11 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const initialState = {
   value: {
     allEvents: [
-      {
-        title: "one",
-        description: "desc for 4-3-2023",
-        date: "4-5-2023",
-        tag: "green",
-        day: "5",
-        id: "ere=e232-03",
-      },
+     
 
-      {
-        title: "two",
-        description: "2nd desc for 5-5-2023",
-        date: "4-5-2023",
-        tag: "red",
-        day: "5",
-        id: "fdier93ed",
-      },
-
-      {
-        title: "three",
-        description: "desc for 5-5-2023",
-        date: "4-5-2023",
-        tag: "green",
-        day: "5",
-        id: "ddie3943",
-      },
-
-      {
-        title: "four",
-        description: "desc for 5-5-2023",
-        date: "4-5-2023",
-        tag: "green",
-        day: "5",
-        id: "di457due",
-      },
-
-      {
-        title: "five",
-        description: "desc for 5-5-2023",
-        date: "4-5-2023",
-        tag: "green",
-        day: "5",
-        id: "39fj349fj",
-      },
-
-      {
-        title: "six",
-        description: "desc for 5-1-2023",
-        date: "5-1-2023",
-        tag: "green",
-        day: "1",
-        id: "788erfdj",
-      },
-
-      {
-        title: "six",
-        description: "desc for 5-1-2023",
-        date: "5-1-2023",
-        tag: "green",
-        day: "1",
-        id: "788erf52248dj",
-      },
-
-      {
-        title: "seven",
-        description: "desc for 3-30-2023",
-        date: "3-30-2023",
-        tag: "green",
-        day: "30",
-        id: "788ety59gerfdj",
-      },
-
-      {
-        title: "eight",
-        description: "desc for 6-11-2023",
-        date: "6-11-2023",
-        tag: "green",
-        day: "11",
-        id: "7u6578gerfdj",
-      },
-
-      {
-        title: "9",
-        description: "desc for 6-11-2023",
-        date: "1-11-2024",
-        tag: "green",
-        day: "11",
-        id: "7u6578gerfasdfasdfasffdj",
-      },
-      {
-        title: "9",
-        description: "desc for 6-11-2023",
-        date: "12-31-2023",
-        tag: "green",
-        day: "31",
-        id: "7u6578gerfasdfasdfasffdj",
-      },
-
-      {
-        title: "9",
-        description: "desc for 6-11-2023",
-        date: "1-1-2024",
-        tag: "green",
-        day: "1",
-        id: "7u6578gerfasdfasdfasffdj",
-      },
-
-      // day isnt day of week its the date
-      {
-        title: "9",
-        description: "desc for 6-11-2023",
-        date: "3-15-2023",
-        tag: "green",
-        day: "15",
-        id: "7u6578gerfa5y53341sdfasdfafwer35234324sffdj",
-      },
-      {
-        title: "9",
-        description: "desc for 6-11-2023",
-        date: "3-15-2023",
-        tag: "green",
-        day: "15",
-        id: "7u778978976578gerfasdfasdfafwer35234324sffdj",
-      },
-      {
-        title: "9",
-        description: "desc for 6-11-2023",
-        date: "3-15-2023",
-        tag: "green",
-        day: "15",
-        id: "7u6578gerfasdfqwcwecasdfafwer35234324sffdj",
-      },
-      {
-        title: "9",
-        description: "desc for 6-11-2023",
-        date: "3-15-2023",
-        tag: "green",
-        day: "15",
-        id: "7u6578gerfasdfqwcwecasdfafwer35245y4ew34324sffdj",
-      },
-      {
-        title: "9",
-        description: "desc for 6-11-2023",
-        date: "3-15-2023",
-        tag: "green",
-        day: "15",
-        id: "7u6578gerqwerfasdfqwcwecasdfafwer35234324sffdj",
-      },
-      // {
-      //   title: "9",
-      //   description: "desc for 6-11-2023",
-      //   date: "3-15-2023",
-      //   tag: "green",
-      //   day: "15",
-      //   id: "7u6578gerfasdmoytfasdfafwer35234324sffdj",
-      // },
+     
+      
+     
       // {
       //   title: "new event2",
       //   description: "2nd desc for 5-5-2023",
@@ -236,19 +85,14 @@ export const userEventsSlice = createSlice({
       state.value.monthsData = {};
       state.value.monthsData = action.payload
 
-      console.log(action.payload)
-
-      // might need all month data (dayStart, daysCount, events)
-      // for (let prop in action.payload) {
-      //   state.value.eventsInMonths[prop] = {
-      //     events: action.payload[prop].events,
-      //   };
-      // }
-
-
-      // state.value.eventsInMonths = [];
-      // state.value.eventsInMonths.push(...action.payload);
     },
+    setAllEvents: (state, action) => {
+      state.value.allEvents = action.payload
+    },
+    eventsReset: (state) => {
+      console.log('eventsReset')
+      state.value.allEvents = []
+    }
   },
 });
 
@@ -258,6 +102,8 @@ export const {
   removeEvent,
   setEventsInMonths,
   updateEvent,
+  setAllEvents,
+  eventsReset
 } = userEventsSlice.actions;
 
 export default userEventsSlice.reducer;

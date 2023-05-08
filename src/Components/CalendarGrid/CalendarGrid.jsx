@@ -22,7 +22,6 @@ const CalendarGrid = ({ monthData }) => {
 
   const { prevMonth, currentMonth, nextMonth } = monthsData;
 
-  console.log(monthsData);
 
   function buildGrid() {
     const gridDaysArr = [];

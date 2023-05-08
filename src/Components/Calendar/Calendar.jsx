@@ -6,7 +6,7 @@ import styles from "./Calendar.module.css";
 import CalendarGrid from "../CalendarGrid/CalendarGrid";
 import CalendarHeader from "../CalendarHeader/CalendarHeader";
 
-const Calendar = () => {
+const Calendar = ({currentUser}) => {
   const [currentMonthData, setCurrentMonthData] = useState({});
 
   // maybe put in redux
@@ -16,6 +16,7 @@ const Calendar = () => {
 
   return (
     <section className={styles.calendar}>
+      <h2>{currentUser.email}</h2>
       <CalendarHeader />
 
         <div>

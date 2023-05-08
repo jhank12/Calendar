@@ -1,17 +1,22 @@
-import React, {useState, useContext, useRef} from "react";
+import React, {useState, useContext, useRef, useEffect} from "react";
 
 import LabelInputWrap from "../../ReusableComponents/LabelInputWrap/LabelInputWrap";
 import ModalContainer from "../../ReusableComponents/ModalContainer/ModalContainer";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../../Contexts/AuthContext";
+import { signOut } from "firebase/auth";
 
 const Login = () => {
 
-  const { login } = useContext(AuthContext);
+  const { login,signout } = useContext(AuthContext);
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+
+  useEffect(() => {
+    signout()
+  }, [])
 
 
   const formSubmit = (e) => {

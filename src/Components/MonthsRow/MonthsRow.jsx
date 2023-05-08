@@ -67,21 +67,21 @@ const MonthsRow = ({ monthDays }) => {
   // get last month, current and next
 
   function getMonthData() {
-    setCurrentMonth(monthsArr[monthCounter]);
 
-    console.log(currentMonth)
+    const currentMonth = monthsArr[monthCounter];
+
+    setCurrentMonth(currentMonth)
 
     let previousMonth = monthsArr[monthCounter - 1];
-    const currentMonthNew = monthsArr[monthCounter];
     let nextMonth = monthsArr[monthCounter + 1];
     let afterNextMonth = monthsArr[monthCounter + 2];
 
-    if (currentMonthNew == "November") {
+    if (currentMonth == "November") {
       afterNextMonth = "January";
-    } else if (currentMonthNew == "December") {
+    } else if (currentMonth == "December") {
       nextMonth = "January";
       afterNextMonth = "February";
-    } else if (currentMonthNew == "January") {
+    } else if (currentMonth == "January") {
       previousMonth = "December";
     }
 
@@ -92,7 +92,7 @@ const MonthsRow = ({ monthDays }) => {
     ).getTime();
 
     const currentMonthMilliseconds = new Date(
-      `${currentMonthNew}, 01, ${currentYear}`
+      `${currentMonth}, 01, ${currentYear}`
     ).getTime();
 
     const nextMonthMilliseconds = new Date(
@@ -145,10 +145,10 @@ const MonthsRow = ({ monthDays }) => {
         ),
       },
       currentMonth: {
-        month: currentMonthNew,
+        month: currentMonth,
         year: currentYear,
         daysCount: currentMonthDays,
-        events: filterEvents(currentMonthNew, currentYear),
+        events: filterEvents(currentMonth, currentYear),
         monthStartDay: currentMonthStartDay,
       },
       nextMonth: {
@@ -196,26 +196,29 @@ const MonthsRow = ({ monthDays }) => {
 
 
   function filterEvents(month, year) {
-    const eventsInMonths = userEvents.filter((event) => {
-      const { date } = event;
+    if(userEvents) {
 
-      const hyphenIdxArr = [];
-
-      for (let i = 0; i < date.length; i++) {
-        if (date[i] == "-") {
-          hyphenIdxArr.push(i);
+      const eventsInMonths = userEvents.filter((event) => {
+        const { date } = event;
+  
+        const hyphenIdxArr = [];
+  
+        for (let i = 0; i < date.length; i++) {
+          if (date[i] == "-") {
+            hyphenIdxArr.push(i);
+          }
         }
-      }
+  
+        const eventMonth = monthsArr[date.slice(0, hyphenIdxArr[0]) - 1];
+        const eventYear = date.slice(hyphenIdxArr[1] + 1);
+  
+        if (eventMonth == month && eventYear == year) {
+          return event;
+        }
+      });
+      return eventsInMonths;
+    } else return
 
-      const eventMonth = monthsArr[date.slice(0, hyphenIdxArr[0]) - 1];
-      const eventYear = date.slice(hyphenIdxArr[1] + 1);
-
-      if (eventMonth == month && eventYear == year) {
-        return event;
-      }
-    });
-
-    return eventsInMonths;
   }
 
 

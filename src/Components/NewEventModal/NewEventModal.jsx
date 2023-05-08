@@ -10,15 +10,19 @@ import { useDispatch, useSelector } from "react-redux";
 import Modal from "../ReusableComponents/Modal/Modal";
 import ModalWithOverlay from "../ReusableComponents/ModalWithOverlay/ModalWithOverlay";
 
+import { doc, setDoc, updateDoc } from "firebase/firestore";
+
 const NewEventModal = ({ setIsOpen }) => {
   const dispatch = useDispatch();
 
-  const events = useSelector((state) => state.userEvents.value);
+  const allEvents = useSelector((state) => state.userEvents.value);
 
   const [date, setDate] = useState("");
   const [day, setDay] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  console.log(allEvents)
 
   function formatDate(e) {
     //  console.log(e.target.value);
@@ -54,8 +58,12 @@ const NewEventModal = ({ setIsOpen }) => {
       tag: "red",
       day: day,
     };
+    
+    const docRef = doc(db, "users", currentUser.uid)
 
-    dispatch(addEvent(newEventObj));
+    // dispatch(addEvent(newEventObj));
+
+    updateDoc
 
     setIsOpen(false);
 

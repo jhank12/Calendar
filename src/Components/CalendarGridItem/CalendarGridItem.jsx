@@ -12,8 +12,11 @@ import EventItemsList from "../EventItemsList/EventItemsList";
 
 const CalendarGridItem = ({ dayData }) => {
   const dispatch = useDispatch();
+
+
+
   return (
-    <div className={styles.calendarDayItem}>
+    <div className={`${styles.calendarDayItem} day-${dayData.events.length > 0 ? dayData.events[0].tag : ''}`}>
       {/* <div className={styles.contentContainer}> */}
         {dayData.day}
         {dayData.events.length > 0 && (

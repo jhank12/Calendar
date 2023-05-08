@@ -14,10 +14,14 @@ import { updateDoc, collection, setDoc, doc } from "firebase/firestore";
 
 import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { eventsReset } from "../Redux/Slices/EventReducer";
+
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -37,7 +41,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      // await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       console.log(currentUser);
       console.log(auth.currentUser);
 
@@ -74,6 +78,7 @@ export const AuthContextProvider = ({ children }) => {
   const signout = async () => {
     try {
       await signOut(auth);
+      dispatch(eventsReset())
       navigate('/')
     } catch (err) {
       console.log(err.message);
@@ -88,7 +93,8 @@ export const AuthContextProvider = ({ children }) => {
         passwordReset,
         emailSuccess,
         setEmailSuccess,
-        signout
+        signout,
+        currentUser
       }}
     >
       {children}
