@@ -64,8 +64,12 @@ const NewEventModal = ({ setIsOpen }) => {
       events: [...allEvents, newEventObj],
     });
 
+
     setIsOpen(false);
   }
+
+
+
 
   return (
     <ModalWithOverlay setIsOpen={setIsOpen}>

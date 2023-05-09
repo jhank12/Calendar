@@ -5,7 +5,6 @@ import styles from "./CalendarGrid.module.css";
 import CalendarGridItem from "../CalendarGridItem/CalendarGridItem";
 
 import { useSelector } from "react-redux";
-import { current } from "@reduxjs/toolkit";
 
 const CalendarGrid = () => {
 

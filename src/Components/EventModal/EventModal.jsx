@@ -6,8 +6,7 @@ import LabelInputWrap from "../ReusableComponents/LabelInputWrap/LabelInputWrap"
 import ModalContainer from "../ReusableComponents/ModalContainer/ModalContainer";
 import Modal from "../ReusableComponents/Modal/Modal";
 
-import { useDispatch, useSelector } from "react-redux";
-import { removeEvent, updateEvent } from "../../Redux/Slices/EventReducer";
+import { useSelector } from "react-redux";
 
 import { updateDoc, doc } from "firebase/firestore";
 
@@ -23,7 +22,6 @@ const EventModal = ({
   setModalOpen,
   idx,
 }) => {
-  const dispatch = useDispatch();
 
   const { currentUser } = useContext(AuthContext);
 

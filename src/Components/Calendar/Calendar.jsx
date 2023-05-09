@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./Calendar.module.css";
 
@@ -6,13 +6,8 @@ import styles from "./Calendar.module.css";
 import CalendarGrid from "../CalendarGrid/CalendarGrid";
 import CalendarHeader from "../CalendarHeader/CalendarHeader";
 
-const Calendar = ({currentUser}) => {
-  const [currentMonthData, setCurrentMonthData] = useState({});
+const Calendar = () => {
 
-  // maybe put in redux
-  // function monthDays(data) {
-  //   setCurrentMonthData(data);
-  // }
 
   return (
     <section className={styles.calendar}>
@@ -20,21 +15,21 @@ const Calendar = ({currentUser}) => {
 
         <div>
         <div className={styles.daysOfWeek}>
-          {/* <p>Sunday</p>
+          <p>Sunday</p>
           <p>Monday</p>
           <p>Tuesday</p>
           <p>Wednesday</p>
           <p>Thursday</p>
           <p>Friday</p>
-          <p>Saturday</p> */}
+          <p>Saturday</p>
 
-          <p>Sun</p>
+          {/* <p>Sun</p>
           <p>Mon</p>
           <p>Tues</p>
           <p>Wed</p>
           <p>Thurs</p>
           <p>Fri</p>
-          <p>Sat</p>
+          <p>Sat</p> */}
         </div>
         <CalendarGrid  />
           </div>      

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
 
 import styles from "./CalendarHeader.module.css";
@@ -7,16 +7,14 @@ import MonthsRow from "../MonthsRow/MonthsRow";
 
 import NewEventModal from "../NewEventModal/NewEventModal";
 
-import { AuthContext } from "../../Contexts/AuthContext";
 
 import { Link } from "react-router-dom";
 
-const CalendarHeader = ({ monthDays, allEvents }) => {
+const CalendarHeader = ({ allEvents }) => {
   const portalDiv = document.getElementById("portalDiv");
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const { signout } = useContext(AuthContext);
 
   return (
     <section className={styles.calendarHeader}>

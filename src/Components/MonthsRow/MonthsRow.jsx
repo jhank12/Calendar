@@ -49,7 +49,6 @@ const MonthsRow = ({ monthDays }) => {
       setMonthCounter((count) => count + 1);
     }
 
-    // setCurrentMonth(monthsArr[monthCounter])
   }
 
   function decrement() {
@@ -60,10 +59,8 @@ const MonthsRow = ({ monthDays }) => {
       setMonthCounter((count) => count - 1);
     }
 
-    // setCurrentMonth(monthsArr[monthCounter])
   }
 
-  // get last month, current and next
 
   const [previousMonth, setPreviousMonth] = useState("");
   const [nextMonth, setNextMonth] = useState("");
@@ -117,16 +114,6 @@ const MonthsRow = ({ monthDays }) => {
       }`
     ).getTime();
 
-    // extract functions into other file
-
-    // make function so this is more efficient
-    //
-
-    // days
-
-    // const previousMonthDays = Math.round(Math.floor(currentMonthMilliseconds - previousMonthMilliseconds) / 86400000);
-    // const currentMonthDays = Math.round(Math.floor(nextMonthMilliseconds - currentMonthMilliseconds) / 86400000);
-    // const nextMonthDays = Math.round(Math.floor(afterNextMonthMilliseconds - nextMonthMilliseconds) / 86400000);
 
     const previousMonthDays = Math.round(
       (currentMonthMilliseconds - previousMonthMilliseconds) / 86400000
@@ -189,14 +176,6 @@ const MonthsRow = ({ monthDays }) => {
 
     if (isTrue) dispatch(setEventsInMonths(monthsData));
 
-    // dispatch(setEventsInMonth(filteredEvents));
-
-    // monthDays({
-    //   daysCount: currentMonthDays,
-    //   month: monthsArr[monthCounter],
-    //   monthStartDay: monthStartDay,
-    //   // events: filteredEvents,
-    // });
   }
 
   function filterEvents(month, year) {

@@ -15,7 +15,6 @@ const CalendarGridItem = ({ dayData }) => {
     >
       {dayData.day}
       <EventItemsList events={dayData.events} />
-      {/* {dayData.events.length > 0 && <EventItemsList events={dayData.events} />} */}
     </div>
   );
 };
