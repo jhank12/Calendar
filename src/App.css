@@ -8,6 +8,7 @@ body {
   background-color: #1e1e1e;
   color: #d4d4d4;
   font-family: "Segoe UI", sans-serif;
+  position: relative;
 }
 
 main {
@@ -56,6 +57,13 @@ svg {
   font: inherit;
   font-size: 1rem;
   font-weight: 500;
+}
+
+.mainActionBtn:hover {
+  background-color: rgba(65, 155, 249, 0.45);
+  color: #4ea4ff;
+
+  
 }
 
 .linkRight {
@@ -131,6 +139,10 @@ input {
 .eventItem-yellow {
   background-color: rgba(252, 255, 54, 0.45);
   color: rgba(252, 255, 54, 1);
+}
+
+.eventModal {
+   width: 1000px !important;
 }
 
 

@@ -1,16 +1,33 @@
-.modalHeader, .modalActionsContainer, .iconsContainer {
+.eventModal {
+   width: 500px !important;
+}
+
+.eventModalSvg {
+   fill: #787878;
+}
+
+.eventModalSvg:hover {
+   fill: #a3a3a3;
+
+}
+
+
+.modalHeader, .modalBottom, .iconsContainer {
    display: flex;
 }
 
-.modalHeader, .modalActionsContainer {
+.modalHeader, .modalBottom {
    align-items: center;
    justify-content: space-between;
    width: 100%;
 }
 
-.iconsContainer {
-   gap: 15px;
+.basicFlex {
+   align-items: center;
+   display: flex;
+   gap: 20px;
 }
+
 
 .eventModalClose {
    height: 45px;
@@ -24,11 +41,38 @@
 
 .textGray {
    color: #787878;
-   /* padding-bottom: 4px; */
 }
 
 .eventCounterContainer {
    align-items: center;
    display: flex;
    gap: 4px;
+}
+
+
+
+.modalBottom {
+   align-items: flex-end;
+}
+
+
+.iconContainer {
+
+
+   border-radius: 8px;
+   color: #787878;
+   cursor: pointer;
+   display: flex;
+   gap: 8px;
+   fill: #787878;
+   padding: 2px;
+}
+
+.iconContainer p {
+   font-weight: 500;
+}
+
+.iconContainer:hover{
+   color: #a3a3a3;
+   fill: #a3a3a3;
 }

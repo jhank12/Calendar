@@ -29,7 +29,7 @@ const ForgotPassword = () => {
     <ModalContainer>
       {!emailSuccess ? (
         <>
-          <h1>Forgot Password?</h1>
+          <h2>Forgot Password?</h2>
 
           <form onSubmit={formSubmit}>
             <div className="formInputs">
@@ -45,7 +45,7 @@ const ForgotPassword = () => {
         </>
       ) : (
         <>
-          <h1>Check your email</h1>
+          <h2>Check your email</h2>
 
           <p>
             A password reset link has been sent to: {emailRef.current.value}

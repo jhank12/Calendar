@@ -57,6 +57,8 @@ const NewEventModal = ({ setIsOpen }) => {
       id: nanoid(),
     };
 
+    console.log(allEvents)
+
     const docRef = doc(db, "users", currentUser.uid);
 
     updateDoc(docRef, {
@@ -87,12 +89,13 @@ const NewEventModal = ({ setIsOpen }) => {
             type="date"
             placeholder="mm/dd/yyyy"
             onChange={(e) => formatDate(e)}
+            required
           />
         </LabelInputWrap>
 
         <LabelInputWrap>
           <label>Title</label>
-          <input type="text" onChange={(e) => setTitle(e.target.value)} />
+          <input type="text" onChange={(e) => setTitle(e.target.value)} required />
         </LabelInputWrap>
 
         <LabelInputWrap>
@@ -101,6 +104,7 @@ const NewEventModal = ({ setIsOpen }) => {
             type=""
             className={styles.descInput}
             onChange={(e) => setDescription(e.target.value)}
+            required
           />
         </LabelInputWrap>
 

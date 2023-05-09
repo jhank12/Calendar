@@ -8,22 +8,10 @@ const initialState = {
     allEvents: [
      
 
-     
-      
-     
-      // {
-      //   title: "new event2",
-      //   description: "2nd desc for 5-5-2023",
-      //   date: "5-5-2023",
-      //   tag: "red",
-      //   day: "5",
-      //   id: "fdier93ed",
-      // },
     ],
 
     monthsData: {},
 
-    // eventsInMonths: [],
   },
 };
 

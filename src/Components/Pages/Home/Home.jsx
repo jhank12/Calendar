@@ -7,7 +7,7 @@ import { AuthContext } from "../../../Contexts/AuthContext";
 
 import { db } from "../../../firebase/config";
 
-import { onSnapshot, getDoc, doc } from "firebase/firestore";
+import { onSnapshot, doc } from "firebase/firestore";
 
 import { setAllEvents } from "../../../Redux/Slices/EventReducer";
 
@@ -20,9 +20,11 @@ const Home = () => {
 
   function getUserData() {
     onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
-      // better check
-      dispatch(setAllEvents([]));
-      dispatch(setAllEvents(doc.data().events));
+      if (doc.data().events) {
+        dispatch(setAllEvents(doc.data().events));
+      } else {
+        return
+      }
     });
   }
 
