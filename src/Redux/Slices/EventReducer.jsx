@@ -1,36 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 // day in obj isn't int for day of the week ie Sun-Sat 0-6
-// const initialState = {
-//   value: [
 
-//     {
-//       title: "new event",
-//       description: "desc for 4-3-2023",
-//       date: "4-3-2023",
-//       tag: "green",
-//       day: "3",
-//       id: "ere=e232-03",
-//     },
-
-//     {
-//       title: "new event1",
-//       description: "desc for 5-5-2023",
-//       date: "5-5-2023",
-//       tag: "green",
-//       day: "5",
-//       id: "ddie3943",
-//     },
-//     {
-//       title: "new event2",
-//       description: "2nd desc for 5-5-2023",
-//       date: "5-5-2023",
-//       tag: "red",
-//       day: "5",
-//       id: "fdier93ed",
-//     },
-//   ],
-// };
 
 const initialState = {
   value: {

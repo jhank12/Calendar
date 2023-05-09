@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import styles from "./EventModal.module.css";
 
@@ -6,8 +6,14 @@ import LabelInputWrap from "../ReusableComponents/LabelInputWrap/LabelInputWrap"
 import ModalContainer from "../ReusableComponents/ModalContainer/ModalContainer";
 import Modal from "../ReusableComponents/Modal/Modal";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeEvent, updateEvent } from "../../Redux/Slices/EventReducer";
+
+import { updateDoc, doc } from "firebase/firestore";
+
+import { db } from "../../firebase/config";
+
+import { AuthContext } from "../../Contexts/AuthContext";
 
 const EventModal = ({
   event,
@@ -19,34 +25,51 @@ const EventModal = ({
 }) => {
   const dispatch = useDispatch();
 
+  const { currentUser } = useContext(AuthContext);
+
+  const allEvents = useSelector((state) => state.userEvents.value.allEvents);
+
+  const docRef = doc(db, "users", currentUser.uid);
+
+  const eventCopy = { ...event };
+
   function removeEventHandler() {
-    dispatch(removeEvent(event.id));
-    // decrement();
-    // if(eventsLength)
-    if(idx === eventsLength - 1) {
-      console.log('decrement')
-      decrement()
+    const filteredEvents = allEvents.filter((ev) => {
+      return ev.id !== eventCopy.id;
+    });
+
+    // find better way. currently duplicating it 
+    updateDoc(docRef, {
+      email: currentUser.email,
+      events: [...filteredEvents],
+    });
+    // dispatch(removeEvent(event.id));
+
+    if (idx === eventsLength - 1) {
+      console.log("decrement");
+      decrement();
     }
-    
+
     if (eventsLength === 1) {
       setModalOpen(false);
-    } 
+    }
   }
 
-  // allow user to update
-
   function updateEventHandler(e) {
-    const key = e.currentTarget.id
-    
-    const updatedValue = prompt(`update ${key}`)
+    const key = e.currentTarget.id;
 
-    const obj = {
-      key: key,
-      updatedValue: updatedValue,
-      id: event.id 
-    }
+    const updatedValue = prompt(`update ${key}`);
 
-    dispatch(updateEvent(obj))
+    eventCopy[key] = updatedValue;
+
+    const updatedEventsList = allEvents.map((ev) =>
+      ev.id === eventCopy.id ? eventCopy : ev
+    );
+
+    updateDoc(docRef, {
+      email: currentUser.email,
+      events: [...updatedEventsList],
+    });
 
   }
 
@@ -54,20 +77,20 @@ const EventModal = ({
     <ModalContainer>
       <header className={styles.modalHeader}>
         <h2>{event.title}</h2>
-         
-         <svg
-            onClick={updateEventHandler}
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            fill="#787878"
-            class="bi bi-pencil"
-            viewBox="0 0 16 16"
-            id="title"
-          >
-            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-          </svg>
-        
+
+        <svg
+          onClick={updateEventHandler}
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          fill="#787878"
+          class="bi bi-pencil"
+          viewBox="0 0 16 16"
+          id="title"
+        >
+          <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+        </svg>
+
         <div className={styles.eventCounterContainer}>
           <svg
             onClick={decrement}
@@ -90,8 +113,6 @@ const EventModal = ({
             </span>
           </h3>
 
- 
-
           <svg
             onClick={increment}
             xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +121,6 @@ const EventModal = ({
             fill="#787878"
             class="bi bi-chevron-right"
             viewBox="0 0 16 16"
-
           >
             <path
               fill-rule="evenodd"
@@ -112,21 +132,19 @@ const EventModal = ({
 
       <LabelInputWrap>
         <label>Description</label>
-        <input className={styles.description} placeholder={event.description}/>
+        <input className={styles.description} placeholder={event.description} />
         <svg
-            onClick={updateEventHandler}
-
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            fill="#787878"
-            class="bi bi-pencil"
-            viewBox="0 0 16 16"
-            id="description"
-
-          >
-            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-          </svg>
+          onClick={updateEventHandler}
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          fill="#787878"
+          class="bi bi-pencil"
+          viewBox="0 0 16 16"
+          id="description"
+        >
+          <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+        </svg>
       </LabelInputWrap>
 
       <div className={styles.modalActionsContainer}>

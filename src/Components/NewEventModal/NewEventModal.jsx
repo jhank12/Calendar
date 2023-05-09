@@ -1,37 +1,29 @@
 import React, { useState, useContext } from "react";
 import styles from "./NewEventModal.module.css";
 
-import ModalContainer from "../ReusableComponents/ModalContainer/ModalContainer";
 import LabelInputWrap from "../ReusableComponents/LabelInputWrap/LabelInputWrap";
 
-import { addEvent } from "../../Redux/Slices/EventReducer";
 
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import Modal from "../ReusableComponents/Modal/Modal";
 import ModalWithOverlay from "../ReusableComponents/ModalWithOverlay/ModalWithOverlay";
 
-import { db } from 'E:/Web Development/React Projects/calendar/src/firebase/config.js'
-import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { db } from "E:/Web Development/React Projects/calendar/src/firebase/config.js";
+import { doc, updateDoc } from "firebase/firestore";
 
-import { AuthContext } from 'E:/Web Development/React Projects/calendar/src/Contexts/AuthContext.jsx'
+import { AuthContext } from "E:/Web Development/React Projects/calendar/src/Contexts/AuthContext.jsx";
 
 const NewEventModal = ({ setIsOpen }) => {
-  const dispatch = useDispatch();
+  const allEvents = useSelector((state) => state.userEvents.value.allEvents);
 
-  const allEvents = useSelector((state) => state.userEvents.value);
-
-  const { currentUser } = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext);
 
   const [date, setDate] = useState("");
   const [day, setDay] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-
   function formatDate(e) {
-    //  console.log(e.target.value);
-
     const originalDate = e.target.value;
 
     const hyphenIdxArr = [];
@@ -62,25 +54,17 @@ const NewEventModal = ({ setIsOpen }) => {
       description: description,
       tag: "red",
       day: day,
-      id:nanoid()
+      id: nanoid(),
     };
-    
+
     const docRef = doc(db, "users", currentUser.uid);
 
-    const { allEvents: events, monthsData } = allEvents
-    console.log(events)
-    // console.log(docRef)  
     updateDoc(docRef, {
       email: currentUser.email,
-      events: [...events, newEventObj]
-    })
-
-    // dispatch(addEvent(newEventObj));
-
-    // updateDoc
+      events: [...allEvents, newEventObj],
+    });
 
     setIsOpen(false);
-
   }
 
   return (
@@ -99,7 +83,6 @@ const NewEventModal = ({ setIsOpen }) => {
             type="date"
             placeholder="mm/dd/yyyy"
             onChange={(e) => formatDate(e)}
-            
           />
         </LabelInputWrap>
 
@@ -114,7 +97,6 @@ const NewEventModal = ({ setIsOpen }) => {
             type=""
             className={styles.descInput}
             onChange={(e) => setDescription(e.target.value)}
-            
           />
         </LabelInputWrap>
 
@@ -122,39 +104,6 @@ const NewEventModal = ({ setIsOpen }) => {
       </form>
     </ModalWithOverlay>
 
-    // <ModalContainer setIsOpen={setIsOpen}>
-    //   <header className={styles.modalHeader}>
-    //     <h2>Add New Event</h2>
-    //     <span className={styles.modalClose} onClick={() => setIsOpen(false)}>x</span>
-    //   </header>
-
-    //   <form onSubmit={formSubmit}>
-    //     <LabelInputWrap>
-    //       <label>Date</label>
-    //       <input
-    //         type="date"
-    //         placeholder="mm/dd/yyyy"
-    //         onChange={(e) => formatDate(e)}
-    //       />
-    //     </LabelInputWrap>
-
-    //     <LabelInputWrap>
-    //       <label>Title</label>
-    //       <input type="text" onChange={(e) => setTitle(e.target.value)} />
-    //     </LabelInputWrap>
-
-    //     <LabelInputWrap>
-    //       <label>Description</label>
-    //       <input
-    //         type=""
-    //         className={styles.descInput}
-    //         onChange={(e) => setDescription(e.target.value)}
-    //       />
-    //     </LabelInputWrap>
-
-    //     <button className={`${styles.newEventSave} mainActionBtn`}>Save</button>
-    //   </form>
-    // </ModalContainer>
   );
 };
 

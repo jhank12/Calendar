@@ -7,21 +7,13 @@ import CalendarGridItem from "../CalendarGridItem/CalendarGridItem";
 import { useSelector } from "react-redux";
 import { current } from "@reduxjs/toolkit";
 
-const CalendarGrid = ({ monthData }) => {
-  // make state arr
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  // const daysArr = [];
+const CalendarGrid = () => {
 
   const [daysArr, setDaysArr] = useState([]);
-
-  // const { month, daysCount, monthStartDay } = monthData;
 
   const monthsData = useSelector((state) => state.userEvents.value.monthsData);
 
   const { prevMonth, currentMonth, nextMonth } = monthsData;
-
 
   function buildGrid() {
     const gridDaysArr = [];
@@ -31,8 +23,6 @@ const CalendarGrid = ({ monthData }) => {
     let nextMonthCount = 1;
 
     for (let i = 1; i < 43; i++) {
-      // gridDaysArr.push({day: i, events: []})
-
       if (i <= currMonthStartDay) {
         const events = mapEventsToDays(
           prevMonth,
@@ -74,16 +64,11 @@ const CalendarGrid = ({ monthData }) => {
     return monthEvents;
   }
 
-  // have is loading bool one level above
-
   useEffect(() => {
     if (Object.keys(monthsData).length > 0) {
-      setIsLoading(false);
       buildGrid();
     }
   }, [monthsData]);
-
-  // maybe split redux events into three arrays prev, current, next
 
   return (
     <>

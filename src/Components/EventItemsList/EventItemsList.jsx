@@ -9,19 +9,14 @@ import DayEventsModalList from "../DayEventsModalList/DayEventsModalList";
 const EventItemsList = ({ events }) => {
   const [eventModalsOpen, setEventModalsOpen] = useState(false);
   const portalDiv = document.getElementById("portalDiv");
-  const [day, setDay] = useState(null);
-
-  const [dayEvents, setDayEvents] = useState(null);
 
   const [startCount, setStartCount] = useState(0);
 
-  function showEventsModals(events, startCount) {
-    setDayEvents(events);
+  function showEventsModals(startCount) {
     setStartCount(startCount);
 
     setEventModalsOpen(true);
   }
-
 
   return (
     <>
@@ -35,30 +30,25 @@ const EventItemsList = ({ events }) => {
           portalDiv
         )}
 
-      {/* figure out how to hide things on certain screen sizes */}
-      {events.length > 0 && 
-      <div className={styles.eventItemsList}>
+      {events.length > 0 && (
+        <div className={styles.eventItemsList}>
           {events.map((ev, idx) => {
-            const { tag, id, day } = ev;
+            const { tag, id } = ev;
 
-            // only allows three to be shown
             if (idx <= 2) {
               return (
                 <div
                   key={id}
-                  onClick={() => showEventsModals(events, idx)}
+                  onClick={() => showEventsModals(idx)}
                   className={`${styles.eventItem} eventItem-${tag}`}
                 >
-                  <p className={styles.eventItemText}>
-                    {ev.title}
-                  </p>
+                  <p className={styles.eventItemText}>{ev.title}</p>
                 </div>
               );
             }
           })}
-      </div>
-      }
-      
+        </div>
+      )}
     </>
   );
 };
