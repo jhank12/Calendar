@@ -20,7 +20,6 @@ const YearDropdown = ({ currentYear, setCurrentYear}) => {
    console.log(year)
    setCurrentYear(year)
    setOptionsOpen(false)
-   // setOptionsOpen(false)
   }
   
   return (

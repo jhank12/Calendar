@@ -6,6 +6,7 @@ import { addEvent, setEventsInMonths } from "../../Redux/Slices/EventReducer";
 import { useSelector, useDispatch } from "react-redux";
 import MonthDropdown from "../MonthDropdown/MonthDropdown";
 import YearDropdown from "../YearDropdown/YearDropdown";
+import MonthArrowButtons from "../MonthArrowButtons/MonthArrowButtons";
 
 const MonthsRow = ({ monthDays }) => {
   const dispatch = useDispatch();
@@ -48,7 +49,6 @@ const MonthsRow = ({ monthDays }) => {
     } else {
       setMonthCounter((count) => count + 1);
     }
-
   }
 
   function decrement() {
@@ -58,9 +58,7 @@ const MonthsRow = ({ monthDays }) => {
     } else {
       setMonthCounter((count) => count - 1);
     }
-
   }
-
 
   const [previousMonth, setPreviousMonth] = useState("");
   const [nextMonth, setNextMonth] = useState("");
@@ -70,11 +68,9 @@ const MonthsRow = ({ monthDays }) => {
 
     setCurrentMonth(currentMonth);
 
-    
     let previousMonth = monthsArr[monthCounter - 1];
     let nextMonth = monthsArr[monthCounter + 1];
     let afterNextMonth = monthsArr[monthCounter + 2];
-    
 
     if (currentMonth == "November") {
       afterNextMonth = "January";
@@ -84,8 +80,6 @@ const MonthsRow = ({ monthDays }) => {
     } else if (currentMonth == "January") {
       previousMonth = "December";
     }
-
-    
 
     setPreviousMonth(previousMonth);
     setNextMonth(nextMonth);
@@ -113,7 +107,6 @@ const MonthsRow = ({ monthDays }) => {
           : currentYear
       }`
     ).getTime();
-
 
     const previousMonthDays = Math.round(
       (currentMonthMilliseconds - previousMonthMilliseconds) / 86400000
@@ -175,7 +168,6 @@ const MonthsRow = ({ monthDays }) => {
     }
 
     if (isTrue) dispatch(setEventsInMonths(monthsData));
-
   }
 
   function filterEvents(month, year) {
@@ -208,20 +200,20 @@ const MonthsRow = ({ monthDays }) => {
 
   return (
     <div className={styles.monthsRow}>
-      {/* <button onClick={() => decrement()}>decrement</button> */}
-      <h2 onClick={() => decrement()}>{previousMonth}</h2>
+      <div className={styles.dropdownContainer}>
+        <MonthDropdown
+          currentMonth={currentMonth}
+          setMonthCounter={setMonthCounter}
+          monthsArr={monthsArr}
+        />
 
-      <MonthDropdown
-        currentMonth={currentMonth}
-        setMonthCounter={setMonthCounter}
-        monthsArr={monthsArr}
-      />
+        <YearDropdown
+          currentYear={currentYear}
+          setCurrentYear={setCurrentYear}
+        />
+      </div>
 
-      <h2 onClick={() => increment()}>{nextMonth}</h2>
-
-      {/* <button onClick={() => increment()}>increment</button> */}
-
-      <YearDropdown currentYear={currentYear} setCurrentYear={setCurrentYear} />
+      <MonthArrowButtons increment={increment} decrement={decrement} />
     </div>
   );
 };

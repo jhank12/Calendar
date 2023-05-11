@@ -34,6 +34,7 @@ const Home = () => {
 
   return (
     <>
+    <h1>on log in screen in the background have snapshot of home page with layer blur and maybe a modal that explains project</h1>
       <Calendar currentUser={currentUser} />
     </>
   );

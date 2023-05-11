@@ -9,8 +9,8 @@ const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
   
   const [optionsOpen, setOptionsOpen] = useState(false)
 
-  function monthHandler(month){
-    setMonthCounter(monthsArr.indexOf(month))
+  function monthHandler(monthNum){
+    setMonthCounter(monthNum)
     setOptionsOpen(false)
   }
   
@@ -27,7 +27,7 @@ const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
       
         <DropdownOptions className='optionsContainer'>
           {monthsArr.map((month, idx) => {
-            return <p key={idx} onClick={() => monthHandler(month)}>{month}</p>
+            return <p key={idx} onClick={() => monthHandler(monthsArr.indexOf(month))}>{month}</p>
           })}
         </DropdownOptions>
       }
