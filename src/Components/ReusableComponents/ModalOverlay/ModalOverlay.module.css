@@ -1,6 +1,8 @@
 .modalOverlay {
    align-items: center;
    background-color: rgba(0,0,0, .4);
+   backdrop-filter: blur(1.5px);
+
    display: flex;
    justify-content: center;
    height: 100vh;

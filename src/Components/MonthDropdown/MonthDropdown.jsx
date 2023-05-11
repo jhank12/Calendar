@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 import Dropdown from "../ReusableComponents/Dropdown/Dropdown";
+import DropdownOptions from "../ReusableComponents/Dropdown/DropdownOptions/DropdownOptions";
 
 import "E:/Web Development/React Projects/calendar/src/Styles/CommonDropdownStyles.css";
 
@@ -20,13 +21,15 @@ const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
         <h1>{currentMonth}</h1>
       </div>
 
+      {/* change dropdown styling to semi transparent with bg blur */}
+
       {optionsOpen && 
       
-        <div className='optionsContainer'>
+        <DropdownOptions className='optionsContainer'>
           {monthsArr.map((month, idx) => {
             return <p key={idx} onClick={() => monthHandler(month)}>{month}</p>
           })}
-        </div>
+        </DropdownOptions>
       }
     </Dropdown>
   );

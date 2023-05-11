@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 import Dropdown from "../ReusableComponents/Dropdown/Dropdown";
+import DropdownOptions from "../ReusableComponents/Dropdown/DropdownOptions/DropdownOptions";
 
 import "E:/Web Development/React Projects/calendar/src/Styles/CommonDropdownStyles.css";
 
@@ -30,13 +31,13 @@ const YearDropdown = ({ currentYear, setCurrentYear}) => {
 
       {optionsOpen && 
       
-        <div className='optionsContainer'>
+        <DropdownOptions className='optionsContainer'>
           
           {yearsArr.map(year => {
             return <p key={year} onClick={(e) => yearHandler(year)}>{year}</p>
           })}
 
-        </div>
+        </DropdownOptions>
       }
     </Dropdown>
   );
