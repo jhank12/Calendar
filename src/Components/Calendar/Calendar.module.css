@@ -1,10 +1,17 @@
 .calendar {
+   background-color: coral;
    /* height: 100%; */
    display: flex;
    flex-direction: column;
-   gap: 50px;
-   padding-top: 40px;
+   gap: 35px;
+   /* padding-top: 40px; */
+   /* margin-top: 60px; */
    /* margin-top: 30px; */
+   width: 90%;
+   max-width: 1900px;
+   margin: 0 auto;
+   /* max-height: 100%; */
+   height: 100%;
 }
 
 .daysOfWeek {
@@ -14,4 +21,10 @@
    font-weight: 500;
    font-size: 1.15rem;
 
+}
+
+@media (max-width: 1024px) {
+   .calendar {
+      /* width: 100%; */
+   }
 }

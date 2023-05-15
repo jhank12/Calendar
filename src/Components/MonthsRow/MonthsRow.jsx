@@ -32,8 +32,9 @@ const MonthsRow = ({ monthDays }) => {
   //   get month and year and set those on load
 
   const [monthCounter, setMonthCounter] = useState(null);
+  const [currentMonth, setCurrentMonth] = useState(monthsArr[monthCounter])
 
-  const [currentMonth, setCurrentMonth] = useState(monthsArr[monthCounter]);
+  // const [currentMonth, setCurrentMonth] = useState(monthsArr[monthCounter]);
   const [currentYear, setCurrentYear] = useState(null);
 
   useEffect(() => {

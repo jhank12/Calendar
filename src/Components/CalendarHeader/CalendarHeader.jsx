@@ -23,7 +23,7 @@ const CalendarHeader = ({ allEvents }) => {
 
       <MonthsRow events={allEvents} />
 
-      <div className={styles.optionsContainer}>
+      {/* <div className={styles.optionsContainer}>
         <button
           onClick={() => setIsOpen(true)}
           className={`${styles.addEventBtn} mainActionBtn`}
@@ -33,7 +33,7 @@ const CalendarHeader = ({ allEvents }) => {
         <Link to="/account">
           <div className={styles.accountIcon} ></div>
         </Link>
-      </div>
+      </div> */}
     </section>
   );
 };

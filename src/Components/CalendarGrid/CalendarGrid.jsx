@@ -7,7 +7,6 @@ import CalendarGridItem from "../CalendarGridItem/CalendarGridItem";
 import { useSelector } from "react-redux";
 
 const CalendarGrid = () => {
-
   const [daysArr, setDaysArr] = useState([]);
 
   const monthsData = useSelector((state) => state.userEvents.value.monthsData);
@@ -21,35 +20,39 @@ const CalendarGrid = () => {
 
     let nextMonthCount = 1;
 
-    for (let i = 1; i < 43; i++) {
-      if (i <= currMonthStartDay) {
-        const events = mapEventsToDays(
-          prevMonth,
-          prevMonth.daysCount - currMonthStartDay + i
-        );
+      for (let i = 1; i < 43; i++) {
+        if (i <= currMonthStartDay) {
+          const events = mapEventsToDays(
+            prevMonth,
+            prevMonth.daysCount - currMonthStartDay + i
+          );
 
-        gridDaysArr.push({
-          day: prevMonth.daysCount - currMonthStartDay + i,
-          events: events,
-        });
-      } else if (
-        i > currMonthStartDay &&
-        i <= currentMonth.daysCount + currMonthStartDay
-      ) {
-        const events = mapEventsToDays(currentMonth, i - currMonthStartDay);
+          gridDaysArr.push({
+            day: prevMonth.daysCount - currMonthStartDay + i,
+            events: events,
+          });
+        } else if (
+          i > currMonthStartDay &&
+          i <= currentMonth.daysCount + currMonthStartDay
+        ) {
+          const events = mapEventsToDays(currentMonth, i - currMonthStartDay);
 
-        gridDaysArr.push({ day: i - currMonthStartDay, events: events });
-      } else {
-        const events = mapEventsToDays(nextMonth, nextMonthCount);
+          gridDaysArr.push({ day: i - currMonthStartDay, events: events });
+        } else {
+          const events = mapEventsToDays(nextMonth, nextMonthCount);
 
-        gridDaysArr.push({ day: nextMonthCount, events: events });
+          gridDaysArr.push({ day: nextMonthCount, events: events });
 
-        nextMonthCount++;
+          nextMonthCount++;
+        }
       }
+
+      setDaysArr(gridDaysArr);
+
+
     }
 
-    setDaysArr(gridDaysArr);
-  }
+
 
   function mapEventsToDays(month, num) {
     const monthEvents = month.events.filter((event) => {
@@ -68,6 +71,7 @@ const CalendarGrid = () => {
       buildGrid();
     }
   }, [monthsData]);
+
 
   return (
     <>

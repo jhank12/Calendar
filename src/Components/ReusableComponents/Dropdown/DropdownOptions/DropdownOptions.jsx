@@ -2,9 +2,10 @@ import React from 'react'
 
 import styles from './DropdownOptions.module.css'
 
-const DropdownOptions = ({children}) => {
+const DropdownOptions = ({children, className}) => {
+  console.log(...className)
   return (
-    <div className={styles.optionsContainer}>{children}</div>
+    <div className={[...className]}>{children}</div>
   )
 }
 

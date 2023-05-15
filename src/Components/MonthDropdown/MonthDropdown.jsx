@@ -5,7 +5,7 @@ import DropdownOptions from "../ReusableComponents/Dropdown/DropdownOptions/Drop
 
 import "E:/Web Development/React Projects/calendar/src/Styles/CommonDropdownStyles.css";
 
-const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
+const MonthDropdown = ({currentMonth, setMonthCounter, monthsArr }) => {
   
   const [optionsOpen, setOptionsOpen] = useState(false)
 
@@ -25,7 +25,7 @@ const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
 
       {optionsOpen && 
       
-        <DropdownOptions className='optionsContainer'>
+        <DropdownOptions className={['optionsContainer monthOptions']}>
           {monthsArr.map((month, idx) => {
             return <p key={idx} onClick={() => monthHandler(monthsArr.indexOf(month))}>{month}</p>
           })}

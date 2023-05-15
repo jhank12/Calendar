@@ -9,11 +9,12 @@ const CalendarGridItem = ({ dayData }) => {
 
   return (
     <div
-      className={`${styles.calendarDayItem} day-${
+      className={`${styles.calendarGridItem} day-${
         dayData.events.length > 0 ? dayData.events[0].tag : ""
       }`}
+
     >
-      {dayData.day}
+      <p>{dayData.day}</p>
       <EventItemsList events={dayData.events} />
     </div>
   );

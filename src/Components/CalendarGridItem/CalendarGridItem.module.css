@@ -1,4 +1,6 @@
-.calendarDayItem {
+.calendarGridItem {
+  /* aspect-ratio: 1/1; */
+
   /* background-color: blue; */
   background-color: #292929;
   background-color: #252525;
@@ -15,18 +17,22 @@
   position: relative;
 }
 
-@media (max-width: 850px) {
-  .calendarDayItem {
-    /* background-color: inherit; */
+/* @media (max-width: 850px) {
+  .calendarGridItem {
+
+    border-radius: 12px;
     align-items: center;
-    font-size: 1.35rem;
     padding: 10px 8px 10px 8px;
     justify-content: center;
     gap: 10px;
   }
 
-  .contentContainer {
-    /* position: sticky; */
+  .calendarGridItem p {
+    font-size: 1.1rem;
+    font-weight: 500;
+
   }
 
-}
+ 
+
+} */

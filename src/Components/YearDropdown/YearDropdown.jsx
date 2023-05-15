@@ -30,7 +30,7 @@ const YearDropdown = ({ currentYear, setCurrentYear}) => {
 
       {optionsOpen && 
       
-        <DropdownOptions className='optionsContainer'>
+        <DropdownOptions className={['optionsContainer yearOptions']}>
           
           {yearsArr.map(year => {
             return <p key={year} onClick={(e) => yearHandler(year)}>{year}</p>

@@ -15,13 +15,13 @@ const Calendar = () => {
 
         <div>
         <div className={styles.daysOfWeek}>
-          <p>Sunday</p>
+          {/* <p>Sunday</p>
           <p>Monday</p>
           <p>Tuesday</p>
           <p>Wednesday</p>
           <p>Thursday</p>
           <p>Friday</p>
-          <p>Saturday</p>
+          <p>Saturday</p> */}
 
           {/* <p>Sun</p>
           <p>Mon</p>
@@ -30,6 +30,15 @@ const Calendar = () => {
           <p>Thurs</p>
           <p>Fri</p>
           <p>Sat</p> */}
+
+          <p>Su</p>
+          <p>M</p>
+          <p>T</p>
+          <p>W</p>
+          <p>Th</p>
+          <p>F</p>
+          <p>Sa</p>
+
         </div>
         <CalendarGrid  />
           </div>      
