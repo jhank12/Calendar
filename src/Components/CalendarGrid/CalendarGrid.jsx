@@ -6,7 +6,7 @@ import CalendarGridItem from "../CalendarGridItem/CalendarGridItem";
 
 import { useSelector } from "react-redux";
 
-const CalendarGrid = () => {
+const CalendarGrid = ({isMobile}) => {
   const [daysArr, setDaysArr] = useState([]);
 
   const monthsData = useSelector((state) => state.userEvents.value.monthsData);
@@ -77,7 +77,7 @@ const CalendarGrid = () => {
     <>
       <div className={styles.calendarGrid}>
         {daysArr.map((day) => {
-          return <CalendarGridItem dayData={day} />;
+          return <CalendarGridItem dayData={day} isMobile={isMobile}/>;
         })}
       </div>
     </>

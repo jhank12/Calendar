@@ -1,78 +1,73 @@
 .eventModal {
-   width: 500px !important;
+  width: 500px !important;
 }
 
 .eventModalSvg {
-   fill: #787878;
+  fill: #787878;
 }
 
 .eventModalSvg:hover {
-   fill: #a3a3a3;
-
+  fill: #a3a3a3;
 }
 
-
-.modalHeader, .modalBottom, .iconsContainer {
-   display: flex;
+.modalHeader,
+.modalBottom,
+.iconsContainer {
+  display: flex;
 }
 
-.modalHeader, .modalBottom {
-   align-items: center;
-   justify-content: space-between;
-   width: 100%;
+.modalHeader,
+.modalBottom {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .basicFlex {
-   align-items: center;
-   display: flex;
-   gap: 20px;
+  align-items: center;
+  display: flex;
+  gap: 20px;
 }
 
-
 .eventModalClose {
-   height: 45px;
-   width: 95px;
+  height: 45px;
+  width: 95px;
 }
 
 .description {
-   border-radius: 5px;
-   min-height: 120px;
+  border-radius: 5px;
+  min-height: 120px;
 }
 
 .textGray {
-   color: #787878;
+  color: #787878;
 }
 
 .eventCounterContainer {
-   align-items: center;
-   display: flex;
-   gap: 4px;
+  align-items: center;
+  display: flex;
+  gap: 4px;
 }
-
-
 
 .modalBottom {
-   align-items: flex-end;
+  align-items: flex-end;
 }
 
-
 .iconContainer {
-
-
-   border-radius: 8px;
-   color: #787878;
-   cursor: pointer;
-   display: flex;
-   gap: 8px;
-   fill: #787878;
-   padding: 2px;
+  border-radius: 8px;
+  color: #787878;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  fill: #787878;
+  padding: 2px;
 }
 
 .iconContainer p {
-   font-weight: 500;
+  font-weight: 500;
 }
 
-.iconContainer:hover{
-   color: #a3a3a3;
-   fill: #a3a3a3;
+.iconContainer:hover {
+  color: #a3a3a3;
+  fill: #a3a3a3;
 }

@@ -26,13 +26,15 @@
 
 @media (max-width: 850px) {
    .eventItemsList {
+      display: none;
+   }
+   /* .eventItemsList {
       flex-direction: row;
       justify-content: center;
       gap: 8px;
    }
 
    .eventItem {
-      /* background-color: rgba(255, 54, 54,1); */
       border-radius: 50%;
       height: 9px;
       padding: 0;
@@ -41,5 +43,5 @@
 
    .eventItemText {
       display: none;
-   }
+   } */
 }

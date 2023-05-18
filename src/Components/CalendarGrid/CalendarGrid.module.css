@@ -3,10 +3,34 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   /* grid-template-rows: repeat(6, 140px); */
-  grid-template-rows: repeat(6, 1fr);
+  /* grid-template-rows: repeat(6, 150px); */
+
+  grid-template-rows: repeat(6, 150px);
 
   gap: 4px;
   height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 840px) {
+  .calendarGrid {
+  grid-template-rows: repeat(6, 100px);
+
+  }
+} 
+
+@media(max-width: 500px) {
+  .calendarGrid {
+    grid-template-rows: repeat(6, 60px);
+  
+    }
+} 
+
+@media (max-width: 400px) {
+  .calendarGrid {
+    grid-template-rows: repeat(6, 40px);
+
+  }
 }
 
 /* @media (min-width: 1500px) {

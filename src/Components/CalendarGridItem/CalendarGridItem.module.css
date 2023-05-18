@@ -1,6 +1,5 @@
 .calendarGridItem {
-  /* aspect-ratio: 1/1; */
-
+  /* aspect-ratio: 3/2; */
   /* background-color: blue; */
   background-color: #292929;
   background-color: #252525;
@@ -17,22 +16,10 @@
   position: relative;
 }
 
-/* @media (max-width: 850px) {
+@media (max-width:768px) {
   .calendarGridItem {
-
-    border-radius: 12px;
     align-items: center;
-    padding: 10px 8px 10px 8px;
+    font-size: 1.35rem;
     justify-content: center;
-    gap: 10px;
   }
-
-  .calendarGridItem p {
-    font-size: 1.1rem;
-    font-weight: 500;
-
-  }
-
- 
-
-} */
+}

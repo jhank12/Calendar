@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ModalOverlay from "../ReusableComponents/ModalOverlay/ModalOverlay";
 import EventModal from "../EventModal/EventModal";
 
-const DayEventsModalList = ({ events, setModalOpen, startCount }) => {
+const DayEventsModalList = ({ events, setModalOpen, startCount = 0 }) => {
   // change to idx of the clicked event
   const [eventCounter, setEventCounter] = useState(startCount);
 

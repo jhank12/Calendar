@@ -1,0 +1,32 @@
+.accountIcon {
+  position: relative;
+}
+
+.accountOptions {
+  background-color: #272727;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 10px 15px;
+  position: absolute;
+  top: 50px;
+  right: 0;
+}
+
+.accountOptions p {
+  color: #a1a1a1;
+
+  cursor: pointer;
+}
+
+.accountOptions p:hover {
+   color: #b8b8b8;
+}
+
+/* todo 
+
+- event modal styling
+- header styling
+- hide firebase
+
+*/

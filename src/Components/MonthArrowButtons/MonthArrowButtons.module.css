@@ -19,8 +19,17 @@
 
 }
 
+
+
 .iconContainer:hover svg {
    fill: #9c9c9c;
 
    
+}
+
+@media (max-width: 650px) {
+   .iconContainer svg {
+      height: 20px;
+      width: 20px;
+   }
 }

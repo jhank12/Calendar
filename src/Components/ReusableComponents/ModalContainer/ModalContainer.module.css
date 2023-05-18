@@ -21,3 +21,9 @@
    gap: 30px;
    margin-top: 20px;
 }
+
+@media (max-width: 560px) {
+   .loginSignup {
+      width: 90% !important;
+   }
+}

@@ -1,33 +1,64 @@
 .calendarHeader {
-   background-color: blueviolet;
-   display: flex;
-   justify-content:flex-end;
-   width: 100%;
-   position: relative;
+  align-items: center;
+  display: flex;
+  /* justify-content:flex-end; */
+  justify-content: center;
+  width: 100%;
+  position: relative;
 }
 
 .monthRow {
-   align-self: center;
-   display: flex;
+  align-self: center;
+  display: flex;
 }
 
-.optionsContainer {
-   align-items: center;
-   display: flex;
-   gap: 65px;
-   position: relative;
+.options {
+  align-items: center;
+  display: flex;
+  gap: 65px;
+  position: absolute;
+  right: 0;
+  height: 100%;
 }
+
+
 
 .addEventBtn {
-   border-radius: 50px;
+  border-radius: 50px;
 
   height: 50px;
   width: 124px;
 }
 
-.accountIcon {
-  background-color: #292929;
-  border-radius: 50px;
-  height: 60px;
-  width: 60px;
+
+
+.hamburgerIcon {
+  display: none;
+}
+
+
+
+@media(max-width: 940px) {
+  .calendarHeader {
+    justify-content: space-between;
+  }  
+
+  .options {
+    position: relative;
+  }
+}
+
+@media (max-width: 700px) {
+  .addEventBtn {
+    height: 48px;
+    width: 110px;
+  }
+
+  .options {
+    display: none;
+  }
+
+  .hamburgerIcon {
+    display: block;
+  }
 }
