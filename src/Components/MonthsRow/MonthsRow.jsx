@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./MonthsRow.module.css";
 
-import { addEvent, setEventsInMonths } from "../../Redux/Slices/EventReducer";
+import { setEventsInMonths } from "../../Redux/Slices/EventReducer";
 
 import { useSelector, useDispatch } from "react-redux";
 import MonthDropdown from "../MonthDropdown/MonthDropdown";
 import YearDropdown from "../YearDropdown/YearDropdown";
 import MonthArrowButtons from "../MonthArrowButtons/MonthArrowButtons";
 
-const MonthsRow = ({ monthDays }) => {
+const MonthsRow = () => {
   const dispatch = useDispatch();
 
   const monthsArr = [
@@ -26,15 +26,12 @@ const MonthsRow = ({ monthDays }) => {
     "December",
   ];
 
-  // const dispatch = useDispatch();
   const userEvents = useSelector((state) => state.userEvents.value.allEvents);
 
-  //   get month and year and set those on load
 
   const [monthCounter, setMonthCounter] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(monthsArr[monthCounter])
 
-  // const [currentMonth, setCurrentMonth] = useState(monthsArr[monthCounter]);
   const [currentYear, setCurrentYear] = useState(null);
 
   useEffect(() => {
@@ -61,8 +58,7 @@ const MonthsRow = ({ monthDays }) => {
     }
   }
 
-  const [previousMonth, setPreviousMonth] = useState("");
-  const [nextMonth, setNextMonth] = useState("");
+ 
 
   function getMonthData() {
     const currentMonth = monthsArr[monthCounter];
@@ -82,8 +78,6 @@ const MonthsRow = ({ monthDays }) => {
       previousMonth = "December";
     }
 
-    setPreviousMonth(previousMonth);
-    setNextMonth(nextMonth);
 
     const previousMonthMilliseconds = new Date(
       `${previousMonth}, 01, ${
@@ -151,7 +145,6 @@ const MonthsRow = ({ monthDays }) => {
       },
     };
 
-    // pass monthsData props into filter events but as their value ex.(previousMonth == march)
 
     let isTrue = false;
 

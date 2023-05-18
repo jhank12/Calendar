@@ -4,7 +4,6 @@ import styles from "./AccountIcon.module.css";
 
 import { AuthContext } from "../../Contexts/AuthContext";
 
-import DropdownOptions from "../ReusableComponents/Dropdown/DropdownOptions/DropdownOptions";
 const AccountIcon = () => {
   const { signout } = useContext(AuthContext);
 

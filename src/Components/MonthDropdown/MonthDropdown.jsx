@@ -19,7 +19,6 @@ const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
         <h1>{currentMonth}</h1>
       </div>
 
-      {/* change dropdown styling to semi transparent with bg blur */}
 
       {
         optionsOpen && (
@@ -36,11 +35,7 @@ const MonthDropdown = ({ currentMonth, setMonthCounter, monthsArr }) => {
             })}
           </DropdownOptions>
         )
-        // <DropdownOptions className={['optionsContainer monthOptions']}>
-        //   {monthsArr.map((month, idx) => {
-        //     return <p key={idx} onClick={() => monthHandler(monthsArr.indexOf(month))}>{month}</p>
-        //   })}
-        // </DropdownOptions>
+ 
       }
     </Dropdown>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./CalendarGridItem.module.css";
 
 import EventItemsList from "../EventItemsList/EventItemsList";
@@ -8,18 +8,13 @@ import DayEventsModalList from "../DayEventsModalList/DayEventsModalList";
 const CalendarGridItem = ({ dayData, isMobile }) => {
   const portalDiv = document.getElementById("portalDiv");
 
-  const [modalOpen, setModalOpen] = useState(false)
-
-
-
-  
-  console.log(isMobile)
+  const [modalOpen, setModalOpen] = useState(false);
 
   function openEvents() {
     if (dayData.events.length > 0 && isMobile) {
       setModalOpen(true);
     } else {
-      return
+      return;
     }
   }
 
@@ -38,9 +33,7 @@ const CalendarGridItem = ({ dayData, isMobile }) => {
         className={`${styles.calendarGridItem} day-${
           dayData.events.length > 0 ? dayData.events[0].tag : ""
         }`}
-
         onClick={openEvents}
-
       >
         <p>{dayData.day}</p>
         <EventItemsList events={dayData.events} />

@@ -4,7 +4,6 @@ import styles from "./EventModal.module.css";
 
 import LabelInputWrap from "../ReusableComponents/LabelInputWrap/LabelInputWrap";
 import ModalContainer from "../ReusableComponents/ModalContainer/ModalContainer";
-import Modal from "../ReusableComponents/Modal/Modal";
 
 import { useSelector } from "react-redux";
 
@@ -36,12 +35,10 @@ const EventModal = ({
       return ev.id !== eventCopy.id;
     });
 
-    // find better way. currently duplicating it 
     updateDoc(docRef, {
       email: currentUser.email,
       events: [...filteredEvents],
     });
-    // dispatch(removeEvent(event.id));
 
     if (idx === eventsLength - 1) {
       console.log("decrement");

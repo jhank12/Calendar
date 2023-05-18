@@ -1,7 +1,5 @@
 import React from "react";
 
-import Calendar from "../Calendar/Calendar";
-
 import styles from "./Sidebar.module.css";
 
 import { useContext } from "react";

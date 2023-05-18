@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
 
 import styles from "./CalendarHeader.module.css";
@@ -8,8 +8,6 @@ import MonthsRow from "../MonthsRow/MonthsRow";
 import NewEventModal from "../NewEventModal/NewEventModal";
 
 import Sidebar from "../Sidebar/Sidebar";
-
-import { Link } from "react-router-dom";
 
 import AccountIcon from "../AccountIcon/AccountIcon";
 
