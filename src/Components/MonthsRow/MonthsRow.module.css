@@ -21,9 +21,9 @@
 
 }
 
-.dropdownContainer {
+.dropdownsContainer {
    display: flex;
-   gap: 5px;
+   gap: 10px;
 }
 
 @media (max-width: 650px) {

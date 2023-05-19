@@ -53,6 +53,32 @@ svg {
   cursor: pointer;
 }
 
+/* width */
+::-webkit-scrollbar {
+  
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #787878;
+  border-radius: 5px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+
+
+
+}
+
 .mainActionBtn {
   background-color: rgba(65, 155, 249, 0.35);
   border: none;

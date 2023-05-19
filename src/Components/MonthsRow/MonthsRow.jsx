@@ -194,12 +194,13 @@ const MonthsRow = () => {
 
   return (
     <div className={styles.monthsRow}>
-      <div className={styles.dropdownContainer}>
+      <div className={styles.dropdownsContainer}>
         <MonthDropdown
           currentMonth={currentMonth}
           setMonthCounter={setMonthCounter}
           monthsArr={monthsArr}
         />
+
 
         <YearDropdown
           currentYear={currentYear}
