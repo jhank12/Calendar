@@ -55,7 +55,6 @@ svg {
 
 /* width */
 ::-webkit-scrollbar {
-  
   width: 5px;
 }
 
@@ -68,15 +67,11 @@ svg {
 ::-webkit-scrollbar-thumb {
   background: #787878;
   border-radius: 5px;
-
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #a3a3a3;
-
-
-
 }
 
 .mainActionBtn {
@@ -92,8 +87,6 @@ svg {
 .mainActionBtn:hover {
   background-color: rgba(65, 155, 249, 0.45);
   color: #4ea4ff;
-
-  
 }
 
 .linkRight {
@@ -141,24 +134,21 @@ input {
 /* fix below */
 
 @media (max-width: 850px) {
-
   .day-red {
     background-color: rgba(255, 54, 54, 0.45) !important;
     color: #f73636 !important;
-  
   }
-  
+
   .day-green {
     background-color: rgba(54, 255, 62, 0.45) !important;
     color: #36ff33 !important;
   }
-  
+
   .day-yellow {
     background-color: rgba(252, 255, 54, 0.45) !important;
     color: rgba(252, 255, 54, 1) !important;
   }
 }
-
 
 .eventItem-red {
   background-color: rgba(255, 54, 54, 0.45);
@@ -178,7 +168,6 @@ input {
 /* .eventModal {
    width: 1000px !important;
 } */
-
 
 @media (max-width: 768px) {
   /* h1 {

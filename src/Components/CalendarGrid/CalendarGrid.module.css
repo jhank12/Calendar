@@ -12,6 +12,13 @@
   width: 100%;
 }
 
+@media (min-width: 1441px) {
+  .calendarGrid {
+    grid-template-rows: repeat(6, 175px);
+  
+    }
+}
+
 @media (max-width: 840px) {
   .calendarGrid {
   grid-template-rows: repeat(6, 100px);

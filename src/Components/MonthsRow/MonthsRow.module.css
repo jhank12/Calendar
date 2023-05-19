@@ -23,7 +23,7 @@
 
 .dropdownsContainer {
    display: flex;
-   gap: 10px;
+   gap: 5px;
 }
 
 @media (max-width: 650px) {

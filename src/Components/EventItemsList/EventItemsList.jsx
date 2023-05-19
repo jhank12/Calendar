@@ -35,7 +35,7 @@ const EventItemsList = ({ events }) => {
           {events.map((ev, idx) => {
             const { tag, id } = ev;
 
-            if (idx <= 2) {
+            // if (idx <= 2) {
               return (
                 <div
                   key={id}
@@ -45,7 +45,7 @@ const EventItemsList = ({ events }) => {
                   <p className={styles.eventItemText}>{ev.title}</p>
                 </div>
               );
-            }
+            // }
           })}
         </div>
       )}
