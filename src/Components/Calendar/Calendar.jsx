@@ -32,7 +32,7 @@ const Calendar = () => {
     <section className={styles.calendar}>
       <CalendarHeader />
 
-      <div>
+      <div className={styles.daysGridContainer}>
         <div className={styles.daysOfWeek} id={styles.daysDesktop}>
           <p>Sunday</p>
           <p>Monday</p>
