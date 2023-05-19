@@ -18,6 +18,7 @@ const CalendarGridItem = ({ dayData, isMobile }) => {
     }
   }
 
+
   return (
     <>
       {modalOpen &&
@@ -32,7 +33,7 @@ const CalendarGridItem = ({ dayData, isMobile }) => {
       <div
         className={`${styles.calendarGridItem} day-${
           dayData.events.length > 0 ? dayData.events[0].tag : ""
-        }`}
+        } ${dayData.inCurrentMonth ? 'dayInMonth' : 'notInMonth'}`}
         onClick={openEvents}
       >
         <p>{dayData.day}</p>

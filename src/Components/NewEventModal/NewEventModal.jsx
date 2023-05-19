@@ -40,6 +40,7 @@ const NewEventModal = ({ setIsOpen }) => {
     const day = originalDate.slice(hyphenIdxArr[1] + 1);
     const year = originalDate.slice(0, hyphenIdxArr[0]);
 
+    console.log(e.currentTarget.value)
     const date = `${month}-${day}-${year}`;
     setDay(day);
     setDate(date);

@@ -101,7 +101,7 @@ label {
   font-size: 1.25rem;
 }
 
-input {
+input, textarea {
   background-color: #333333;
   border: none;
   border-radius: 10px;
@@ -113,6 +113,13 @@ input {
   padding-left: 20px;
   width: 100%;
 }
+
+textarea {
+  resize: none;
+  padding: 10px;
+}
+
+
 
 .formInputs {
   display: flex;
@@ -165,16 +172,26 @@ input {
   color: rgba(252, 255, 54, 1);
 }
 
-/* .eventModal {
-   width: 1000px !important;
-} */
+.dayInMonth {
+  background-color: #252525;
+  color: #c1c1c1
+}
+
+.notInMonth {
+  background-color: #222222;
+
+  color: #888888
+
+}
 
 @media (max-width: 768px) {
-  /* h1 {
-    font-size: 2.2rem;
-  } */
-
   html {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 430px) {
+  html {
+    font-size: 11px;
   }
 }

@@ -15,75 +15,23 @@
 @media (min-width: 1441px) {
   .calendarGrid {
     grid-template-rows: repeat(6, 175px);
-  
-    }
+  }
 }
 
 @media (max-width: 840px) {
   .calendarGrid {
-  grid-template-rows: repeat(6, 100px);
-
+    grid-template-rows: repeat(6, 100px);
   }
-} 
+}
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   .calendarGrid {
     grid-template-rows: repeat(6, 60px);
-  
-    }
-} 
+  }
+}
 
 @media (max-width: 400px) {
   .calendarGrid {
-    grid-template-rows: repeat(6, 40px);
-
-  }
-}
-
-/* @media (min-width: 1500px) {
-  .calendarGrid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 150px);
-    gap: 4px;
-    height: 100%;
-  }
-} */
-
-/* @media (max-width: 920px) {
-  .calendarGrid {
-    grid-template-rows: repeat(6, 75px);
-  }
-}
-
-@media (max-width: 920px) {
-  .calendarGrid {
-
     grid-template-rows: repeat(6, 50px);
   }
 }
-
-@media (max-width: 900px) {
-  .calendarGrid {
-    grid-template-columns: repeat(7, 1fr);
-
-    grid-template-rows: repeat(6, 130px);
-  }
-}
-
-@media (max-width: 490px) {
-  .calendarGrid {
-    grid-template-columns: repeat(7, 50px);
-
-    grid-template-rows: repeat(6, 50px);
-    gap: 8px;
-  }
-}
-
-@media(max-width: 450px) {
-  .calendarGrid {
-    grid-template-columns: repeat(7, 1fr);
-
-    grid-template-rows: repeat(6, 50px);
-  }
-} */

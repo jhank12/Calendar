@@ -13,6 +13,8 @@ const CalendarGrid = ({isMobile}) => {
 
   const { prevMonth, currentMonth, nextMonth } = monthsData;
 
+  console.log(currentMonth)
+
   function buildGrid() {
     const gridDaysArr = [];
 
@@ -30,6 +32,7 @@ const CalendarGrid = ({isMobile}) => {
           gridDaysArr.push({
             day: prevMonth.daysCount - currMonthStartDay + i,
             events: events,
+            inCurrentMonth: false
           });
         } else if (
           i > currMonthStartDay &&
@@ -37,11 +40,11 @@ const CalendarGrid = ({isMobile}) => {
         ) {
           const events = mapEventsToDays(currentMonth, i - currMonthStartDay);
 
-          gridDaysArr.push({ day: i - currMonthStartDay, events: events });
+          gridDaysArr.push({ day: i - currMonthStartDay, events: events, inCurrentMonth: true });
         } else {
           const events = mapEventsToDays(nextMonth, nextMonthCount);
 
-          gridDaysArr.push({ day: nextMonthCount, events: events });
+          gridDaysArr.push({ day: nextMonthCount, events: events, inCurrentMonth: false });
 
           nextMonthCount++;
         }
