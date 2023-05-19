@@ -134,15 +134,11 @@ const EventModal = ({
             disabled
           />
 
-        
-
           <svg
             onClick={updateEventHandler}
             xmlns="http://www.w3.org/2000/svg"
             width="22"
             height="22"
-            // fill="#787878"
-            // class={["bi bi-pencil", styles.eventModalSvg]}
             class={`${styles.eventModalSvg} bi bi-pencil`}
             viewBox="0 0 16 16"
             id="description"

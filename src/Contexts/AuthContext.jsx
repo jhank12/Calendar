@@ -10,7 +10,7 @@ import {
 
 import { db, auth } from "../firebase/config";
 
-import { updateDoc, collection, setDoc, doc } from "firebase/firestore";
+import {setDoc, doc } from "firebase/firestore";
 
 import { useNavigate } from "react-router-dom";
 

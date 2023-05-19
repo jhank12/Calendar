@@ -35,17 +35,15 @@ const EventItemsList = ({ events }) => {
           {events.map((ev, idx) => {
             const { tag, id } = ev;
 
-            // if (idx <= 2) {
-              return (
-                <div
-                  key={id}
-                  onClick={() => showEventsModals(idx)}
-                  className={`${styles.eventItem} eventItem-${tag}`}
-                >
-                  <p className={styles.eventItemText}>{ev.title}</p>
-                </div>
-              );
-            // }
+            return (
+              <div
+                key={id}
+                onClick={() => showEventsModals(idx)}
+                className={`${styles.eventItem} eventItem-${tag}`}
+              >
+                <p className={styles.eventItemText}>{ev.title}</p>
+              </div>
+            );
           })}
         </div>
       )}

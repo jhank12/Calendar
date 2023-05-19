@@ -1,17 +1,11 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-// day in obj isn't int for day of the week ie Sun-Sat 0-6
-
 
 const initialState = {
   value: {
-    allEvents: [
-     
-
-    ],
+    allEvents: [],
 
     monthsData: {},
-
   },
 };
 
@@ -40,18 +34,16 @@ export const userEventsSlice = createSlice({
     },
 
     setEventsInMonths: (state, action) => {
-
       state.value.monthsData = {};
-      state.value.monthsData = action.payload
-
+      state.value.monthsData = action.payload;
     },
     setAllEvents: (state, action) => {
-      state.value.allEvents = action.payload
+      state.value.allEvents = action.payload;
     },
     eventsReset: (state) => {
-      console.log('eventsReset')
-      state.value.allEvents = []
-    }
+      console.log("eventsReset");
+      state.value.allEvents = [];
+    },
   },
 });
 
@@ -62,7 +54,7 @@ export const {
   setEventsInMonths,
   updateEvent,
   setAllEvents,
-  eventsReset
+  eventsReset,
 } = userEventsSlice.actions;
 
 export default userEventsSlice.reducer;

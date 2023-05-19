@@ -1,15 +1,10 @@
 .calendarGrid {
-  /* background-color: crimson; */
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  /* grid-template-rows: repeat(6, 140px); */
-  /* grid-template-rows: repeat(6, 150px); */
-
-  grid-template-rows: repeat(6, 150px);
-
   gap: 4px;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 150px);
   height: 100%;
-  margin-top: 5px;
+  margin-top: 3px;
   width: 100%;
 }
 

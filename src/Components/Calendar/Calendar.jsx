@@ -24,7 +24,6 @@ const Calendar = () => {
       setIsMobile(false);
     }
 
-    // doesnt check onload
     window.addEventListener("resize", checkSize);
   }, []);
 

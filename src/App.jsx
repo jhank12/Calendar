@@ -1,4 +1,3 @@
-import { useState, useContext } from 'react'
 
 import './App.css'
 
@@ -6,11 +5,9 @@ import Home from './Components/Pages/Home/Home'
 import Login from './Components/Pages/Login/Login'
 import Signup from './Components/Pages/Signup/Signup'
 import ForgotPassword from './Components/Pages/ForgotPassword/ForgotPassword'
-import Account from './Components/Pages/Account/Account'
 import { AuthContextProvider } from './Contexts/AuthContext'
-import { AuthContext } from './Contexts/AuthContext'
 
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes'
 
 function App() {
@@ -31,7 +28,6 @@ function App() {
 
         <Route element={<ProtectedRoutes />}>
           <Route path='/home' element={<Home />} exact/>
-          <Route path='/account' element={<Account />} />
 
         </Route>
 

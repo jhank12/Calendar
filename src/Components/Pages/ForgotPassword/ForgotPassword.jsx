@@ -1,10 +1,9 @@
-import React, { useState, useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 
 import { AuthContext } from "../../../Contexts/AuthContext";
 
 import { Link } from "react-router-dom";
 
-// components
 
 import ModalContainer from "../../ReusableComponents/ModalContainer/ModalContainer";
 import LabelInputWrap from "../../ReusableComponents/LabelInputWrap/LabelInputWrap";

@@ -1,10 +1,9 @@
 .calendarHeader {
   align-items: center;
   display: flex;
-  /* justify-content:flex-end; */
   justify-content: center;
-  width: 100%;
   position: relative;
+  width: 100%;
 }
 
 .monthRow {
@@ -16,12 +15,10 @@
   align-items: center;
   display: flex;
   gap: 65px;
+  height: 100%;
   position: absolute;
   right: 0;
-  height: 100%;
 }
-
-
 
 .addEventBtn {
   border-radius: 50px;
@@ -30,18 +27,14 @@
   width: 124px;
 }
 
-
-
 .hamburgerIcon {
   display: none;
 }
 
-
-
-@media(max-width: 940px) {
+@media (max-width: 940px) {
   .calendarHeader {
     justify-content: space-between;
-  }  
+  }
 
   .options {
     position: relative;
