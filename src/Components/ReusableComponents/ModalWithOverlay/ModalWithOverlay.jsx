@@ -16,10 +16,6 @@ const ModalWithOverlay = ({ children, setIsOpen }) => {
         }
       }}
     >
-      {/* <div className={styles.modalContainer}>
-         {children}
-      </div> */}
-
       <ModalContainer>{children}</ModalContainer>
     </div>
   );

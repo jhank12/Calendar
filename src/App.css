@@ -93,6 +93,11 @@ svg {
   align-self: flex-end;
 }
 
+.errorText {
+  color: #FF3636;
+  font-size: 1.1rem;
+}
+
 /* inputs */
 
 label {

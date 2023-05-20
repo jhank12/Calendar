@@ -17,12 +17,15 @@ const Login = () => {
     signout();
   }, []);
 
-  const formSubmit = (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
 
     const hasString = emailRef.current.value.includes(" ") ? "true" : "false";
 
-    login(emailRef.current.value, passwordRef.current.value);
+    console.log();
+
+    const loginSuccess = await login(emailRef.current.value, passwordRef.current.value)
+
   };
 
   return (
@@ -44,6 +47,8 @@ const Login = () => {
             </Link>
           </LabelInputWrap>
         </div>
+
+        <p className="errorText">Error: Invalid email and/or password</p>
 
         <button className="formSubmit">Log In</button>
       </form>

@@ -29,6 +29,7 @@ const Calendar = () => {
 
   return (
     <section className={styles.calendar}>
+      {/* <h2>for mobile only have the squares that have events be colored for the the rest have transparent background</h2> */}
       <CalendarHeader />
 
       <div className={styles.daysGridContainer}>

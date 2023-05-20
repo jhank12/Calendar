@@ -48,6 +48,8 @@ export const AuthContextProvider = ({ children }) => {
       navigate("/home");
     } catch (err) {
       console.log(err.message);
+
+      return err
     }
   };
 
