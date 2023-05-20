@@ -40,42 +40,25 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   const login = async (email, password) => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log(currentUser);
-      console.log(auth.currentUser);
-
-      navigate("/home");
-    } catch (err) {
-      console.log(err.message);
-
-      return err
-    }
-  };
+    return signInWithEmailAndPassword(auth, email, password);
+  }
 
   const createUser = async (email, password) => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      console.log(currentUser);
-      console.log(auth.currentUser);
-      setDoc(doc(db, "users", auth.currentUser.uid), {
-        email: auth.currentUser.email,
-      });
+    return createUserWithEmailAndPassword(auth, email, password);
+  }
 
-      navigate("/home");
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+  // const passwordReset = async (email) => {
+  //   try {
+  //     await sendPasswordResetEmail(auth, email);
+  //     setEmailSuccess(true);
+  //   } catch (err) {
+  //     console.log(err.message);
+  //   }
+  // };
 
   const passwordReset = async (email) => {
-    try {
-      await sendPasswordResetEmail(auth, email);
-      setEmailSuccess(true);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+    return sendPasswordResetEmail(auth, email);
+  }
 
   const signout = async () => {
     try {
@@ -93,8 +76,7 @@ export const AuthContextProvider = ({ children }) => {
         login,
         createUser,
         passwordReset,
-        emailSuccess,
-        setEmailSuccess,
+      
         signout,
         currentUser
       }}

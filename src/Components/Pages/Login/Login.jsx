@@ -7,8 +7,15 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthContext";
 import { signOut } from "firebase/auth";
 
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
+  const navigate = useNavigate();
+
   const { login, signout } = useContext(AuthContext);
+
+  const [hasError, setHasError] = useState(false);
+  const [errorText, setErrorText] = useState("");
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -20,12 +27,15 @@ const Login = () => {
   const formSubmit = async (e) => {
     e.preventDefault();
 
-    const hasString = emailRef.current.value.includes(" ") ? "true" : "false";
+    setHasError(false);
+    setErrorText("");
 
-    console.log();
-
-    const loginSuccess = await login(emailRef.current.value, passwordRef.current.value)
-
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+      navigate("/home");
+    } catch (err) {
+      setHasError(true);
+    }
   };
 
   return (
@@ -48,7 +58,9 @@ const Login = () => {
           </LabelInputWrap>
         </div>
 
-        <p className="errorText">Error: Invalid email and/or password</p>
+        {hasError && (
+          <p className="errorText">Error: Invalid email and/or password.</p>
+        )}
 
         <button className="formSubmit">Log In</button>
       </form>

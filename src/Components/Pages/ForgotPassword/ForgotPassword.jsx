@@ -1,27 +1,32 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import { AuthContext } from "../../../Contexts/AuthContext";
 
 import { Link } from "react-router-dom";
 
-
 import ModalContainer from "../../ReusableComponents/ModalContainer/ModalContainer";
 import LabelInputWrap from "../../ReusableComponents/LabelInputWrap/LabelInputWrap";
 
 const ForgotPassword = () => {
-  const { passwordReset, setEmailSuccess, emailSuccess } = useContext(AuthContext);
+  const { passwordReset } = useContext(AuthContext);
 
+  const [emailSuccess, setEmailSuccess] = useState(false);
 
-
-  useEffect(() => {
-   setEmailSuccess(false)
-  }, [])
+  const [hasError, setHasError] = useState(false);
 
   const emailRef = useRef(null);
 
-  const formSubmit =  (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
-    passwordReset(emailRef.current.value);
+
+    setHasError(false);
+
+    try {
+      await passwordReset(emailRef.current.value);
+      setEmailSuccess(true);
+    } catch {
+      setHasError(true);
+    }
   };
 
   return (
@@ -34,13 +39,17 @@ const ForgotPassword = () => {
             <div className="formInputs">
               <LabelInputWrap>
                 <label>Email</label>
-                <input ref={emailRef}  />
+                <input ref={emailRef} />
               </LabelInputWrap>
             </div>
 
+            {hasError && (
+              <p className="errorText">Error: No user found with this email</p>
+            )}
+
             <button className="formSubmit">Send Reset Link</button>
           </form>
-          <Link to='/'>Back to Login</Link>
+          <Link to="/">Back to Login</Link>
         </>
       ) : (
         <>
@@ -50,7 +59,9 @@ const ForgotPassword = () => {
             A password reset link has been sent to: {emailRef.current.value}
           </p>
 
-          <Link to='/' onClick={() => setEmailSuccess(false)}>Back to login</Link>
+          <Link to="/" onClick={() => setEmailSuccess(false)}>
+            Back to login
+          </Link>
         </>
       )}
     </ModalContainer>
