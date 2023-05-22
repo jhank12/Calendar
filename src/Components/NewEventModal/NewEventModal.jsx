@@ -8,7 +8,9 @@ import { nanoid } from "@reduxjs/toolkit";
 import ModalWithOverlay from "../ReusableComponents/ModalWithOverlay/ModalWithOverlay";
 
 import { db } from "E:/Web Development/React Projects/calendar/src/firebase/config.js";
-import { doc, updateDoc } from "firebase/firestore";
+// import { doc, updateDoc } from "firebase/firestore";
+
+import { doc, updateDoc } from "./firebase/firestore";
 
 import { AuthContext } from "E:/Web Development/React Projects/calendar/src/Contexts/AuthContext.jsx";
 
