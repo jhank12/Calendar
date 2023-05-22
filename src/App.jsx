@@ -12,8 +12,6 @@ import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes'
 
 function App() {
 
-
-
   return (
 
     // maybe put context one level below
