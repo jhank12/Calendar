@@ -7,25 +7,9 @@ import CalendarGrid from "../CalendarGrid/CalendarGrid";
 import CalendarHeader from "../CalendarHeader/CalendarHeader";
 
 const Calendar = () => {
-  const [isMobile, setIsMobile] = useState(false);
 
-  function checkSize() {
-    if (window.innerWidth <= 850) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  }
 
-  useEffect(() => {
-    if (window.innerWidth <= 850) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
 
-    window.addEventListener("resize", checkSize);
-  }, []);
 
   return (
     <section className={styles.calendar}>
@@ -53,7 +37,7 @@ const Calendar = () => {
           <p>Sa</p>
         </div>
 
-        <CalendarGrid isMobile={isMobile} />
+        <CalendarGrid />
       </div>
     </section>
   );

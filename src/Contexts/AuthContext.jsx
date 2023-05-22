@@ -8,9 +8,8 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 
-import { db, auth } from "../firebase/config";
+import { auth } from "../firebase/config";
 
-import {setDoc, doc } from "firebase/firestore";
 
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +24,6 @@ export const AuthContextProvider = ({ children }) => {
 
   const [currentUser, setCurrentUser] = useState(null);
 
-  const [emailSuccess, setEmailSuccess] = useState(null);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
@@ -46,15 +44,6 @@ export const AuthContextProvider = ({ children }) => {
   const createUser = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   }
-
-  // const passwordReset = async (email) => {
-  //   try {
-  //     await sendPasswordResetEmail(auth, email);
-  //     setEmailSuccess(true);
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // };
 
   const passwordReset = async (email) => {
     return sendPasswordResetEmail(auth, email);

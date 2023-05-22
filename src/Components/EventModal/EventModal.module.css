@@ -81,6 +81,7 @@
 }
 
 .iconContainer {
+  align-items: center;
   border-radius: 8px;
   color: #787878;
   cursor: pointer;

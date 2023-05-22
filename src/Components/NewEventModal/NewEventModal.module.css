@@ -18,3 +18,29 @@
 .descInput {
    height: 100px;
 }
+
+.colorCirclesContainer {
+   display: flex;
+   gap: 15px;
+}
+
+
+.colorCircle {
+   border-radius: 50%;
+   cursor: pointer;
+   height: 30px;
+   width: 30px;
+}
+
+
+.redCircle {
+   background-color: #FF3636;
+}
+
+.greenCircle {
+   background-color: #36FF3E;
+}
+
+.yellowCircle {
+   background-color: #FFE927;
+}

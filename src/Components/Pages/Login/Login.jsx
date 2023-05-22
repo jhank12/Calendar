@@ -15,7 +15,6 @@ const Login = () => {
   const { login, signout } = useContext(AuthContext);
 
   const [hasError, setHasError] = useState(false);
-  const [errorText, setErrorText] = useState("");
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -28,7 +27,6 @@ const Login = () => {
     e.preventDefault();
 
     setHasError(false);
-    setErrorText("");
 
     try {
       await login(emailRef.current.value, passwordRef.current.value);
