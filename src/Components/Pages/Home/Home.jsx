@@ -36,6 +36,7 @@ const Home = () => {
 
   return (
     <>
+    {/* <h2>todo:account signout button hover add new event color radio input</h2> */}
         <Calendar />
     </>
   );

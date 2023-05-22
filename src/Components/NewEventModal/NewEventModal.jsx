@@ -10,7 +10,7 @@ import ModalWithOverlay from "../ReusableComponents/ModalWithOverlay/ModalWithOv
 import { db } from "E:/Web Development/React Projects/calendar/src/firebase/config.js";
 // import { doc, updateDoc } from "firebase/firestore";
 
-import { doc, updateDoc } from "@firebase/firestore";
+// import { doc, updateDoc } from "firebase/firestore";
 
 import { AuthContext } from "E:/Web Development/React Projects/calendar/src/Contexts/AuthContext.jsx";
 
@@ -62,12 +62,12 @@ const NewEventModal = ({ setIsOpen }) => {
 
     console.log(allEvents);
 
-    const docRef = doc(db, "users", currentUser.uid);
+    // const docRef = doc(db, "users", currentUser.uid);
 
-    updateDoc(docRef, {
-      email: currentUser.email,
-      events: [...allEvents, newEventObj],
-    });
+    // updateDoc(docRef, {
+    //   email: currentUser.email,
+    //   events: [...allEvents, newEventObj],
+    // });
 
     setIsOpen(false);
   }
