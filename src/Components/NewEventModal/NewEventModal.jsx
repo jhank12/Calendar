@@ -11,6 +11,8 @@ import ModalWithOverlay from "../ReusableComponents/ModalWithOverlay/ModalWithOv
 
 import { doc, updateDoc } from "firebase/firestore";
 
+import { db } from "../../firebase/config";
+
 import { AuthContext } from "../../Contexts/AuthContext";
 
 const NewEventModal = ({ setIsOpen }) => {
