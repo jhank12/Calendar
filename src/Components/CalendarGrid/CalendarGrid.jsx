@@ -13,7 +13,6 @@ const CalendarGrid = () => {
 
   const { prevMonth, currentMonth, nextMonth } = monthsData;
 
-
   function buildGrid() {
     const gridDaysArr = [];
 
