@@ -14,15 +14,18 @@ const ForgotPassword = () => {
 
   const [hasError, setHasError] = useState(false);
 
-  const emailRef = useRef(null);
+  const [ email, setEmail ] = useState(null);
+
 
   const formSubmit = async (e) => {
     e.preventDefault();
 
     setHasError(false);
 
+
     try {
-      await passwordReset(emailRef.current.value);
+      await passwordReset(email);
+
       setEmailSuccess(true);
     } catch {
       setHasError(true);
@@ -39,7 +42,7 @@ const ForgotPassword = () => {
             <div className="formInputs">
               <LabelInputWrap>
                 <label>Email</label>
-                <input ref={emailRef} />
+                <input onChange={(e) => setEmail(e.target.value)}/>
               </LabelInputWrap>
             </div>
 
@@ -56,7 +59,7 @@ const ForgotPassword = () => {
           <h2>Check your email</h2>
 
           <p>
-            A password reset link has been sent to: {emailRef.current.value}
+            A password reset link has been sent to: {email}
           </p>
 
           <Link to="/" onClick={() => setEmailSuccess(false)}>
