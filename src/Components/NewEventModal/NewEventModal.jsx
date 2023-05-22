@@ -11,7 +11,7 @@ import ModalWithOverlay from "../ReusableComponents/ModalWithOverlay/ModalWithOv
 
 import { doc, updateDoc } from "firebase/firestore";
 
-import { AuthContext } from "E:/Web Development/React Projects/calendar/src/Contexts/AuthContext.jsx";
+import { AuthContext } from "../../Contexts/AuthContext";
 
 const NewEventModal = ({ setIsOpen }) => {
   const allEvents = useSelector((state) => state.userEvents.value.allEvents);
