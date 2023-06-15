@@ -11,10 +11,8 @@ import ProtectedRoutes from "./Components/ProtectedRoutes/ProtectedRoutes";
 
 function App() {
   return (
-    // maybe put context one level below
     <AuthContextProvider>
       <main>
-        {/* have react router with login, signup, home */}
         <Routes>
           <Route path="/*" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

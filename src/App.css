@@ -6,7 +6,6 @@
 
 body {
   background-color: #1e1e1e;
-  /* background-color: crimson; */
 
   color: #d4d4d4;
   font-family: "Segoe UI", sans-serif;
@@ -17,9 +16,7 @@ main {
   margin: 0 auto;
   padding-top: 50px;
   height: 100vh;
-  /* width: 95%; */
   position: relative;
-  /* max-width: 1800px; */
 }
 
 h1 {

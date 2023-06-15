@@ -5,7 +5,6 @@ import ModalContainer from "../../ReusableComponents/ModalContainer/ModalContain
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../../Contexts/AuthContext";
-import { signOut } from "firebase/auth";
 
 import { useNavigate } from "react-router-dom";
 

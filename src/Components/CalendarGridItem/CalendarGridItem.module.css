@@ -17,7 +17,6 @@
 @media (max-width: 768px) {
   .calendarGridItem {
     align-items: center;
-    /* align-items: flex-end; */
     box-shadow: none;
     justify-content: center;
     font-size: 1.6rem;
