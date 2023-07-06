@@ -9,6 +9,7 @@ import YearDropdown from "../YearDropdown/YearDropdown";
 import MonthArrowButtons from "../MonthArrowButtons/MonthArrowButtons";
 
 const MonthsRow = () => {
+  
   const dispatch = useDispatch();
 
   const monthsArr = [
