@@ -19,6 +19,10 @@ const Home = () => {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
+    console.log(currentUser)
+  }, [])
+
+  useEffect(() => {
     function getUserData() {
       onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
         if (doc.data().events) {
@@ -33,7 +37,6 @@ const Home = () => {
 
   return (
     <>
-      {/* <h2>todo:account signout button hover add new event color radio input</h2> */}
       <Calendar />
     </>
   );

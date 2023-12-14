@@ -10,7 +10,6 @@ import {
 
 import { auth } from "../firebase/config";
 
-
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
@@ -22,16 +21,13 @@ export const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')), auth.currentUser);
-
+  const [currentUser, setCurrentUser] = useState(auth.currentUser || JSON.parse(localStorage.getItem("user")));
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      console.log(user)
       if (user) {
-        console.log(user)
         setCurrentUser(user);
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user));
       } else {
         setCurrentUser(null);
       }
@@ -42,22 +38,22 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
-  }
+  };
 
   const createUser = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
-  }
+  };
 
   const passwordReset = async (email) => {
     return sendPasswordResetEmail(auth, email);
-  }
+  };
 
   const signout = async () => {
     try {
       await signOut(auth);
-      localStorage.setItem('user', {});
-      dispatch(eventsReset())
-      navigate('/')
+      dispatch(eventsReset());
+      // localStorage.setItem("user", " ");
+      navigate("/");
     } catch (err) {
       console.log(err.message);
     }
@@ -69,9 +65,9 @@ export const AuthContextProvider = ({ children }) => {
         login,
         createUser,
         passwordReset,
-      
+
         signout,
-        currentUser
+        currentUser,
       }}
     >
       {children}
