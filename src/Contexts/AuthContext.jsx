@@ -55,6 +55,7 @@ export const AuthContextProvider = ({ children }) => {
   const signout = async () => {
     try {
       await signOut(auth);
+      localStorage.setItem('user', {});
       dispatch(eventsReset())
       navigate('/')
     } catch (err) {
