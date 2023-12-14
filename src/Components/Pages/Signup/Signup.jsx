@@ -42,6 +42,8 @@ const Signup = () => {
       // alert("Passwords don't match");
       setPasswordError(true);
     }
+
+    
   };
 
   return (

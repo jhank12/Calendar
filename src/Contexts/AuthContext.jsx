@@ -22,20 +22,23 @@ export const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')), auth.currentUser);
 
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
+      console.log(user)
       if (user) {
+        console.log(user)
         setCurrentUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
       } else {
         setCurrentUser(null);
       }
     });
 
     return () => unsub();
-  });
+  }, []);
 
   const login = async (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);

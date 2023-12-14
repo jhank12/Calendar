@@ -13,31 +13,28 @@ import { setAllEvents } from "../../../Redux/Slices/EventReducer";
 
 import { useDispatch } from "react-redux";
 
-
 const Home = () => {
   const dispatch = useDispatch();
 
   const { currentUser } = useContext(AuthContext);
 
-
-  function getUserData() {
-    onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
-      if (doc.data().events) {
-        dispatch(setAllEvents(doc.data().events));
-      } else {
-        return
-      }
-    });
-  }
-
   useEffect(() => {
+    function getUserData() {
+      onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
+        if (doc.data().events) {
+          dispatch(setAllEvents(doc.data().events));
+        } else {
+          return;
+        }
+      });
+    }
     getUserData();
   }, []);
 
   return (
     <>
-    {/* <h2>todo:account signout button hover add new event color radio input</h2> */}
-        <Calendar />
+      {/* <h2>todo:account signout button hover add new event color radio input</h2> */}
+      <Calendar />
     </>
   );
 };
