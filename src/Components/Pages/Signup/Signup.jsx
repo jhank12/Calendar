@@ -54,17 +54,17 @@ const Signup = () => {
         <div className="formInputs">
           <LabelInputWrap>
             <label>Email</label>
-            <input ref={emailRef} />
+            <input ref={emailRef} required/>
           </LabelInputWrap>
 
           <LabelInputWrap>
             <label>Password</label>
-            <input ref={passwordRef} />
+            <input ref={passwordRef} required/>
           </LabelInputWrap>
 
           <LabelInputWrap>
             <label>Confirm Password</label>
-            <input ref={passwordConfirmRef} />
+            <input ref={passwordConfirmRef} required/>
           </LabelInputWrap>
         </div>
 
